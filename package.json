@@ -13,9 +13,13 @@
   "author": "Giedrius Tamulaitis",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.0",
     "tslint": "^5.18.0",
     "tslint-config-airbnb": "^5.11.1",
     "typedoc": "^0.15.0",
     "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
