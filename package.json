@@ -1,0 +1,11 @@
+{
+  "name": "equeum-graphql-server",
+  "version": "1.0.0",
+  "description": "GraphQL server implementation over Express exporting Equeum specific utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Giedrius Tamulaitis",
+  "license": "ISC"
+}
