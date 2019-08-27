@@ -1,12 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_express_1 = require("apollo-server-express");
-// import { buildTypeDefsAndResolvers } from 'type-graphql';
-const graphql_tools_1 = require("graphql-tools");
+const federation_1 = require("@apollo/federation");
 class EqueumGraphQLServer {
     constructor(params) {
         const { app, typeDefs, resolvers, } = params;
-        const schema = graphql_tools_1.makeExecutableSchema({ typeDefs, resolvers });
+        const federatedTypeDefs = apollo_server_express_1.gql(typeDefs);
+        const federatedResolvers = resolvers;
+        const schema = federation_1.buildFederatedSchema([{
+                typeDefs: federatedTypeDefs,
+                resolvers: federatedResolvers,
+            }]);
         const server = new apollo_server_express_1.ApolloServer({
             schema,
             context: ({ req }) => {

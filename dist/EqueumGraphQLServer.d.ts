@@ -1,8 +1,8 @@
 import { Application } from 'express';
-import { IResolvers, ITypeDefinitions } from 'graphql-tools';
+import { IResolvers } from 'graphql-tools';
 interface EqueumGraphQLServerParams {
     app: Application;
-    typeDefs: ITypeDefinitions;
+    typeDefs: any;
     resolvers: IResolvers<any, any> | IResolvers<any, any>[];
 }
 declare class EqueumGraphQLServer {
