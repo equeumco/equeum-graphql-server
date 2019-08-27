@@ -4,6 +4,14 @@
   "description": "GraphQL server implementation over Express exporting Equeum specific utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/equeumco/equeum-graphql-server"
+  },
+  "bugs": {
+    "url": "https://github.com/equeumco/equeum-graphql-server/issues"
+  },
+  "homepage": "https://github.com/equeumco/equeum-graphql-server#readme",
   "scripts": {
     "build": "npx tsc",
     "build:watch": "npx tsc -w",
