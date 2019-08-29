@@ -14,21 +14,12 @@ class EqueumGraphQLServer {
         const server = new apollo_server_express_1.ApolloServer({
             schema,
             context: ({ req }) => {
-                return { no: 'context' };
+                return {
+                    user: req.user,
+                };
             },
         });
         server.applyMiddleware({ app });
-        // buildTypeDefsAndResolvers({ resolvers }).then(({ typeDefs, resolvers }:
-        //   IExecutableSchemaDefinition<any>) => {
-        //   const schema = makeExecutableSchema({ typeDefs, resolvers });
-        //   const server = new ApolloServer({
-        //     schema,
-        //     context: ({ req }: { req: Request }) => {
-        //       return { no: 'context' };
-        //     },
-        //   });
-        //   server.applyMiddleware({ app });
-        // });
     }
 }
 exports.default = EqueumGraphQLServer;

@@ -1,7 +1,7 @@
 import { ApolloServer, gql } from 'apollo-server-express';
-import { Application, Request } from 'express';
+import { Application } from 'express';
 import { buildFederatedSchema } from '@apollo/federation';
-import { IResolvers, ITypeDefinitions, makeExecutableSchema } from 'graphql-tools';
+import { IResolvers } from 'graphql-tools';
 import { EqueumContext } from './types';
 
 interface EqueumGraphQLServerParams {
@@ -28,26 +28,14 @@ class EqueumGraphQLServer {
 
     const server = new ApolloServer({
       schema,
-      context: ({ req }: { req: Request }): EqueumContext => {
-        return { no: 'context' };
+      context: ({ req }: { req: any }): EqueumContext => {
+        return {
+          user: req.user,
+        };
       },
     });
 
     server.applyMiddleware({ app });
-
-    // buildTypeDefsAndResolvers({ resolvers }).then(({ typeDefs, resolvers }:
-    //   IExecutableSchemaDefinition<any>) => {
-    //   const schema = makeExecutableSchema({ typeDefs, resolvers });
-
-    //   const server = new ApolloServer({
-    //     schema,
-    //     context: ({ req }: { req: Request }) => {
-    //       return { no: 'context' };
-    //     },
-    //   });
-
-    //   server.applyMiddleware({ app });
-    // });
   }
 }
 

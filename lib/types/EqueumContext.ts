@@ -1,5 +1,7 @@
+import AuthenticatedUserData from './AuthenticatedUserData';
+
 class EqueumContext {
-  no: string;
+  user?: AuthenticatedUserData;
 }
 
 export default EqueumContext;
