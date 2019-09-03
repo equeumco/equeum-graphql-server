@@ -31,6 +31,7 @@ class EqueumGraphQLServer {
       context: ({ req }: { req: any }): EqueumContext => {
         return {
           user: req.user,
+          authHeader: req.headers.authorization || '',
         };
       },
     });
