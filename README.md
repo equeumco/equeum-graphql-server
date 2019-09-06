@@ -1,4 +1,4 @@
-# Equeum GrapgQL Server
+# Equeum GraphQL Server
 
 Implementation of GraphQL server. Takes in type definitions and resolvers and configures GraphQL server with authenticated user data in context and other standard things. Apollo Federation ready. Also exports Equeum specific type definitions.
 
