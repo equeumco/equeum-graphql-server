@@ -90,3 +90,7 @@ This type defines context that will be available inside each resover.
 ## Error handling
 
 All the errors thrown inside resolvers are returned to user. Currently way too detailed error information is sent back. Error handling is a subject to be upgraded heavily in a near future.
+
+## Documentation
+
+Class and type reference can be found under [/docs](./docs)
