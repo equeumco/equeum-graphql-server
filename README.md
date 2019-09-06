@@ -75,7 +75,7 @@ buildTypeDefsAndResolvers({ resolvers: [ ... ] }).then(({ typeDefs, resolvers })
 
 ## EqueumGraphQLServer (default export)
 
-Main class containing GraphQL server implementation. [Working example](#Working Example) has copy-paste ready code to bootsrap the server.
+Main class containing GraphQL server implementation. [Working example](#working-example) has copy-paste ready code to bootsrap the server.
 
 ### Authentification
 
