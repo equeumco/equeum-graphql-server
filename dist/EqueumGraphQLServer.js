@@ -2,7 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_express_1 = require("apollo-server-express");
 const federation_1 = require("@apollo/federation");
+/**
+ * GraphQL server implementation
+ */
 class EqueumGraphQLServer {
+    /**
+     * Configures and sets up the server and binds it to Express app.
+     *
+     * @param params Server parameters
+     */
     constructor(params) {
         const { app, typeDefs, resolvers, } = params;
         const federatedTypeDefs = apollo_server_express_1.gql(typeDefs);

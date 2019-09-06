@@ -1,16 +1,16 @@
 import { ApolloServer, gql } from 'apollo-server-express';
-import { Application } from 'express';
 import { buildFederatedSchema } from '@apollo/federation';
-import { IResolvers } from 'graphql-tools';
-import { EqueumContext } from './types';
+import { EqueumContext, EqueumGraphQLServerParams } from './types';
 
-interface EqueumGraphQLServerParams {
-  app: Application;
-  typeDefs: any;
-  resolvers: IResolvers<any, any> | IResolvers<any, any>[];
-}
-
+/**
+ * GraphQL server implementation
+ */
 class EqueumGraphQLServer {
+  /**
+   * Configures and sets up the server and binds it to Express app.
+   *
+   * @param params Server parameters
+   */
   constructor(params: EqueumGraphQLServerParams) {
     const {
       app,
