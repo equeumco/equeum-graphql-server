@@ -45,9 +45,10 @@ const resolvers = {
 
 new EqueumRESTServer({
   app,
-  // We need to pass this here to make sure /graphql path is not handled by REST server
-  // and left for GraphQL server
-  passThroughRoutes: ['/graphql']
+  // We need to pass this here to make sure /graphql route is just checked for auth
+  // but not handled by REST server and left for GraphQL server
+  passThroughRoutes: ['/graphql'],
+  addAuthToRoutes: ['/graphql]
 });
 new EqueumGraphQLServer({
   app,
@@ -80,6 +81,17 @@ Main class containing GraphQL server implementation. [Working example](#working-
 ### Authentification
 
 EqueumGraphQL server relies on EqueumRESTServer to verify JWT token and add user data to request object. It expects all requests that pass REST server auth middleware to be authenticated. It then reads user data from request object and populates GraphQL context with that data.
+
+### Constructor Parameters
+
+#### app: Application
+Express app object to build the server over
+
+#### typeDefs: any
+GraphQL type definitions
+
+#### resolvers: IResolvers<any, any> | IResolvers<any, any>[]
+Resolver functions
 
 ## Types
 
