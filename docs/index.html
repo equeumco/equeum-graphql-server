@@ -153,6 +153,22 @@ buildTypeDefsAndResolvers({ resolvers: [ ... ] }).<span class="hljs-keyword">the
 					<h3>EqueumContext</h3>
 				</a>
 				<p>This type defines context that will be available inside each resover.</p>
+				<a href="#decorators" id="decorators" style="color: inherit; text-decoration: none;">
+					<h2>Decorators</h2>
+				</a>
+				<a href="#requirerole" id="requirerole" style="color: inherit; text-decoration: none;">
+					<h3>RequireRole</h3>
+				</a>
+				<p>Decorator to be used for access control. By default we suppose that all GraphQL resources are accessible to all users. If we want to limit the access to specific resource, we can add RequireROle decorator to resolver annotation. Valid roles are &#39;ADMIN&#39; or &#39;MACHINE&#39;, you can also supply multiple roles that are allowed to access this resource by providing an array like [&#39;ADMIN&#39;, &#39;MACHINE&#39;].</p>
+				<pre><code><span class="hljs-meta">@RequireRole</span>(<span class="hljs-string">'ADMIN'</span>)
+<span class="hljs-meta">@Query</span>(<span class="hljs-function"><span class="hljs-params">returns</span> =&gt;</span> <span class="hljs-built_in">String</span>)
+<span class="hljs-keyword">async</span> test(): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">string</span>&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'I will only be seen by ADMIN'</span>;
+}</code></pre><pre><code><span class="hljs-meta">@RequireRole</span>([<span class="hljs-string">'ADMIN'</span>, <span class="hljs-string">'MACHINE'</span>])
+<span class="hljs-meta">@Query</span>(<span class="hljs-function"><span class="hljs-params">returns</span> =&gt;</span> <span class="hljs-built_in">String</span>)
+<span class="hljs-keyword">async</span> test(): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">string</span>&gt; {
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'I will only be seen by ADMIN or MACHINE'</span>;
+}</code></pre>
 				<a href="#error-handling" id="error-handling" style="color: inherit; text-decoration: none;">
 					<h2>Error handling</h2>
 				</a>
@@ -171,6 +187,12 @@ buildTypeDefsAndResolvers({ resolvers: [ ... ] }).<span class="hljs-keyword">the
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_equeumgraphqlserver_.html">"<wbr>Equeum<wbr>GraphQLServer"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_decorators_requirerole_.html">"decorators/<wbr>Require<wbr>Role"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_decorators_index_.html">"decorators/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_index_.html">"index"</a>

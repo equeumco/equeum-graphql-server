@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;types/AuthenticatedUserData&quot; | equeum-graphql-server</title>
+	<title>&quot;decorators/RequireRole&quot; | equeum-graphql-server</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_types_authenticateduserdata_.html">&quot;types/AuthenticatedUserData&quot;</a>
+					<a href="_decorators_requirerole_.html">&quot;decorators/RequireRole&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;types/AuthenticatedUserData&quot;</h1>
+			<h1>External module &quot;decorators/RequireRole&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,12 +71,86 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
+							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_types_authenticateduserdata_.authenticateduserdata.html" class="tsd-kind-icon">Authenticated<wbr>User<wbr>Data</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_decorators_requirerole_.html#requirerole" class="tsd-kind-icon">Require<wbr>Role</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="requirerole" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Require<wbr>Role</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">Require<wbr>Role<span class="tsd-signature-symbol">(</span>roles<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/e3435d1/lib/decorators/RequireRole.ts#L16">decorators/RequireRole.ts:16</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Decorator to be used for access control. By default we suppose that
+										all GraphQL resources are accessible to all users. If we want to limit
+										the access to specific resource, we can add RequireROle decorator to
+										resolver annotation. Valid roles are &#39;ADMIN&#39; or &#39;MACHINE&#39;, you can also
+										supply multiple roles that are allowed to access this resource by providing
+									an array like [&#39;ADMIN&#39;, &#39;MACHINE&#39;].</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>roles: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>role or roles needed to acces this resource</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter-siganture">
+									<ul class="tsd-signatures tsd-kind-type-literal tsd-has-type-parameter">
+										<li class="tsd-signature tsd-kind-icon">&lt;T&gt;<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span>, propertyKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span>, descriptor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TypedPropertyDescriptor</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TypedPropertyDescriptor</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span></li>
+									</ul>
+									<ul class="tsd-descriptions">
+										<li class="tsd-description">
+											<h4 class="tsd-type-parameters-title">Type parameters</h4>
+											<ul class="tsd-type-parameters">
+												<li>
+													<h4>T</h4>
+												</li>
+											</ul>
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameters">
+												<li>
+													<h5>target: <span class="tsd-signature-type">Object</span></h5>
+												</li>
+												<li>
+													<h5>propertyKey: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">symbol</span></h5>
+												</li>
+												<li>
+													<h5>descriptor: <span class="tsd-signature-type">TypedPropertyDescriptor</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+												</li>
+											</ul>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TypedPropertyDescriptor</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>
+												<span class="tsd-signature-symbol"> | </span>
+												<span class="tsd-signature-type">void</span>
+											</h4>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -89,7 +163,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_equeumgraphqlserver_.html">"<wbr>Equeum<wbr>GraphQLServer"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="_decorators_requirerole_.html">"decorators/<wbr>Require<wbr>Role"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -98,7 +172,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="_index_.html">"index"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="_types_authenticateduserdata_.html">"types/<wbr>Authenticated<wbr>User<wbr>Data"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -114,8 +188,8 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_types_authenticateduserdata_.authenticateduserdata.html" class="tsd-kind-icon">Authenticated<wbr>User<wbr>Data</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_decorators_requirerole_.html#requirerole" class="tsd-kind-icon">Require<wbr>Role</a>
 					</li>
 				</ul>
 			</nav>
