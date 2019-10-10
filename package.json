@@ -14,9 +14,9 @@
   "homepage": "https://github.com/equeumco/equeum-graphql-server#readme",
   "scripts": {
     "build": "npx tsc",
-    "build:watch": "npx tsc -w",
+    "build:docs": "npx typedoc --out docs/ lib/",
+    "dev": "npx tsc -w",
     "tslint": "npx tslint -c tslint.json -p tsconfig.json",
-    "docs": "npx typedoc --out docs/ lib/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Giedrius Tamulaitis <gtamulaitis@equeum.com>",
