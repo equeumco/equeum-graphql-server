@@ -19,6 +19,7 @@ class EqueumGraphQLServer {
                 typeDefs: federatedTypeDefs,
                 resolvers: federatedResolvers,
             }]);
+        this.schema = schema;
         const server = new apollo_server_express_1.ApolloServer({
             schema,
             context: ({ req }) => {
@@ -29,6 +30,9 @@ class EqueumGraphQLServer {
             },
         });
         server.applyMiddleware({ app });
+    }
+    getSchema() {
+        return this.schema;
     }
 }
 exports.default = EqueumGraphQLServer;

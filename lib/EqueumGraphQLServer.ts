@@ -1,11 +1,13 @@
 import { ApolloServer, gql } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { EqueumContext, EqueumGraphQLServerParams } from './types';
+import { GraphQLSchema } from 'graphql';
 
 /**
  * GraphQL server implementation
  */
 class EqueumGraphQLServer {
+  schema: GraphQLSchema;
   /**
    * Configures and sets up the server and binds it to Express app.
    *
@@ -25,6 +27,7 @@ class EqueumGraphQLServer {
       typeDefs: federatedTypeDefs,
       resolvers: federatedResolvers,
     }]);
+    this.schema = schema;
 
     const server = new ApolloServer({
       schema,
@@ -37,6 +40,10 @@ class EqueumGraphQLServer {
     });
 
     server.applyMiddleware({ app });
+  }
+
+  getSchema(): GraphQLSchema {
+    return this.schema;
   }
 }
 
