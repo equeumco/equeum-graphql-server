@@ -92,6 +92,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_equeumcontext_.equeumcontext.html#authheader" class="tsd-kind-icon">auth<wbr>Header</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_equeumcontext_.equeumcontext.html#authtoken" class="tsd-kind-icon">auth<wbr>Token</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_equeumcontext_.equeumcontext.html#user" class="tsd-kind-icon">user</a></li>
 							</ul>
 						</section>
@@ -106,13 +107,29 @@
 					<div class="tsd-signature tsd-kind-icon">auth<wbr>Header<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/e3435d1/lib/types/EqueumContext.ts#L13">types/EqueumContext.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/fcd67eb/lib/types/EqueumContext.ts#L18">types/EqueumContext.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Raw authentication header (&#39;Bearer JWTJWTJWT&#39;) to be passed
-							along when calling other services</p>
+							<p>Authentication header to be user when calling other services. Is
+								the same as authToken except contains full header with &#39;Bearer &#39;
+							prepended.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="authtoken" class="tsd-anchor"></a>
+					<h3>auth<wbr>Token</h3>
+					<div class="tsd-signature tsd-kind-icon">auth<wbr>Token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/fcd67eb/lib/types/EqueumContext.ts#L12">types/EqueumContext.ts:12</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Authentication token to be used when calling other services.</p>
 						</div>
 					</div>
 				</section>
@@ -122,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_types_authenticateduserdata_.authenticateduserdata.html" class="tsd-signature-type">AuthenticatedUserData</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/e3435d1/lib/types/EqueumContext.ts#L8">types/EqueumContext.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/fcd67eb/lib/types/EqueumContext.ts#L8">types/EqueumContext.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -174,6 +191,9 @@
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_types_equeumcontext_.equeumcontext.html#authheader" class="tsd-kind-icon">auth<wbr>Header</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_types_equeumcontext_.equeumcontext.html#authtoken" class="tsd-kind-icon">auth<wbr>Token</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_types_equeumcontext_.equeumcontext.html#user" class="tsd-kind-icon">user</a>
