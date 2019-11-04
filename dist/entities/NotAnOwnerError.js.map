@@ -1,0 +1,1 @@
+{"version":3,"file":"NotAnOwnerError.js","sourceRoot":"","sources":["../../lib/entities/NotAnOwnerError.ts"],"names":[],"mappings":";;AAAA,iDAAgD;AAEhD;;;GAGG;AACH,MAAM,eAAgB,SAAQ,+BAAe;IAC3C;QACE,KAAK,CAAC,iDAAiD,CAAC,CAAC;IAC3D,CAAC;CACF;AAED,kBAAe,eAAe,CAAC"}
