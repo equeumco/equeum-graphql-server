@@ -6,8 +6,13 @@ declare class EqueumContext {
     /** Object containing the data of user that is making the request. */
     user?: AuthenticatedUserData;
     /**
-     * Raw authentication header ('Bearer JWTJWTJWT') to be passed
-     * along when calling other services
+     * Authentication token to be used when calling other services.
+     */
+    authToken: string;
+    /**
+     * Authentication header to be user when calling other services. Is
+     * the same as authToken except contains full header with 'Bearer '
+     * prepended.
      */
     authHeader: string;
 }

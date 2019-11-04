@@ -23,9 +23,13 @@ class EqueumGraphQLServer {
         const server = new apollo_server_express_1.ApolloServer({
             schema,
             context: ({ req }) => {
+                const authHeader = req.headers.authorization || '';
+                const headerParts = authHeader.split(' ');
+                const authToken = headerParts && headerParts.length > 1 ? headerParts[1] : '';
                 return {
                     user: req.user,
-                    authHeader: req.headers.authorization || '',
+                    authToken,
+                    authHeader,
                 };
             },
         });
