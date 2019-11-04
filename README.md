@@ -125,6 +125,12 @@ async test(): Promise<string> {
 
 All the errors thrown inside resolvers are returned to user. Currently way too detailed error information is sent back. Error handling is a subject to be upgraded heavily in a near future.
 
+Here are exported error classes you can use in your code for standard error responses.
+
+### NotAnOwnerError
+
+Error to be thrown when the uswer is not an owner of the entity he is trying to access or change.
+
 ## Documentation
 
 Class and type reference can be found under [/docs](./docs)
