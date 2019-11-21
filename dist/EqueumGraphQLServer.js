@@ -32,6 +32,10 @@ class EqueumGraphQLServer {
                     authHeader,
                 };
             },
+            formatError: (err) => {
+                console.error(err);
+                return err;
+            },
         });
         server.applyMiddleware({ app });
     }

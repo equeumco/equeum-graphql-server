@@ -14,5 +14,7 @@ interface AuthenticatedUserData {
      * can be identified (only found in M2M tokens)
      */
     machineName?: string;
+    /** Indicates if request is made via external API */
+    isExternal?: boolean;
 }
 export default AuthenticatedUserData;
