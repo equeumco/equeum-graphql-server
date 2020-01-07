@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_express_1 = require("apollo-server-express");
 const federation_1 = require("@apollo/federation");
+const utils_1 = require("./utils");
 /**
  * GraphQL server implementation
  */
@@ -38,6 +39,7 @@ class EqueumGraphQLServer {
             },
         });
         server.applyMiddleware({ app });
+        console.log(`EqueumGraphQLServer (v${utils_1.getPackageVersion()}) initialized.`);
     }
     getSchema() {
         return this.schema;

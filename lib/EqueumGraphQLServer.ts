@@ -1,7 +1,8 @@
+import { GraphQLSchema } from 'graphql';
 import { ApolloServer, gql } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import { EqueumContext, EqueumGraphQLServerParams } from './types';
-import { GraphQLSchema } from 'graphql';
+import { getPackageVersion } from './utils';
 
 /**
  * GraphQL server implementation
@@ -48,6 +49,7 @@ class EqueumGraphQLServer {
     });
 
     server.applyMiddleware({ app });
+    console.log(`EqueumGraphQLServer (v${getPackageVersion()}) initialized.`);
   }
 
   getSchema(): GraphQLSchema {

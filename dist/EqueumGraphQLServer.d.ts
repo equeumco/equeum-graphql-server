@@ -1,5 +1,5 @@
-import { EqueumGraphQLServerParams } from './types';
 import { GraphQLSchema } from 'graphql';
+import { EqueumGraphQLServerParams } from './types';
 /**
  * GraphQL server implementation
  */
