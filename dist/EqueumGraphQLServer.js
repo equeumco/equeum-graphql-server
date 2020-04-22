@@ -13,7 +13,7 @@ class EqueumGraphQLServer {
      * @param params Server parameters
      */
     constructor(params) {
-        const { app, typeDefs, resolvers, } = params;
+        const { app, typeDefs, loaders = {}, resolvers, } = params;
         const federatedTypeDefs = apollo_server_express_1.gql(typeDefs);
         const federatedResolvers = resolvers;
         const schema = federation_1.buildFederatedSchema([{
@@ -31,6 +31,7 @@ class EqueumGraphQLServer {
                     user: req.user,
                     authToken,
                     authHeader,
+                    loaders,
                 };
             },
             formatError: (err) => {

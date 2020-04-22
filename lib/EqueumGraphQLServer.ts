@@ -18,6 +18,7 @@ class EqueumGraphQLServer {
     const {
       app,
       typeDefs,
+      loaders = {},
       resolvers,
     } = params;
 
@@ -40,6 +41,7 @@ class EqueumGraphQLServer {
           user: req.user,
           authToken,
           authHeader,
+          loaders,
         };
       },
       formatError: (err) => {

@@ -1,3 +1,4 @@
+import Dataloader from 'dataloader';
 import AuthenticatedUserData from './AuthenticatedUserData';
 /**
  * Context object that will be passed to all resolvers.
@@ -15,5 +16,11 @@ declare class EqueumContext {
      * prepended.
      */
     authHeader: string;
+    /**
+     * Dataloader instances for batching queries
+     */
+    loaders: {
+        [key: string]: typeof Dataloader;
+    };
 }
 export default EqueumContext;
