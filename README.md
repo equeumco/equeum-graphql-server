@@ -93,6 +93,9 @@ GraphQL type definitions
 #### resolvers: IResolvers<any, any> | IResolvers<any, any>[]
 Resolver functions
 
+#### loaders: { [key: string]: DataLoader<string, any> }
+Custom data loaders. We use [DataLoader](https://github.com/graphql/dataloader) utility to batch and optimise resolving queries. Loaders passed here will be added to context and available to use in your resolvers.
+
 ## Types
 
 ### EqueumContext
