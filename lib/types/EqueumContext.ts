@@ -20,7 +20,7 @@ class EqueumContext {
   /**
    * Dataloader instances for batching queries
    */
-  loaders: { [key: string]: typeof Dataloader };
+  loaders: { [key: string]: Dataloader<string, any> };
 }
 
 export default EqueumContext;
