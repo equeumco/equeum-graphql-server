@@ -27,11 +27,15 @@ class EqueumGraphQLServer {
                 const authHeader = req.headers.authorization || '';
                 const headerParts = authHeader.split(' ');
                 const authToken = headerParts && headerParts.length > 1 ? headerParts[1] : '';
+                const loaderInstances = {};
+                Object.keys(loaders).map((key) => {
+                    loaderInstances[key] = loaders[key]();
+                });
                 return {
                     user: req.user,
                     authToken,
                     authHeader,
-                    loaders,
+                    loaders: loaderInstances,
                 };
             },
             formatError: (err) => {

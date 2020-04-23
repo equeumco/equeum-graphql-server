@@ -12,7 +12,7 @@ interface EqueumGraphQLServerParams {
     typeDefs: any;
     /** Additional context parameters to be added */
     loaders: {
-        [key: string]: DataLoader<string, any>;
+        [key: string]: () => DataLoader<string, any>;
     };
     /** Resolver functions */
     resolvers: IResolvers<any, any> | IResolvers<any, any>[];
