@@ -10,10 +10,10 @@ interface EqueumGraphQLServerParams {
   app: Application;
   /** GraphQL type definitions */
   typeDefs: any;
-  /** Additional context parameters to be added */
-  loaders: { [key: string]: () => DataLoader<string, any> };
   /** Resolver functions */
   resolvers: IResolvers<any, any> | IResolvers<any, any>[];
+  /** dataloader instance creators */
+  loaders?: { [key: string]: () => DataLoader<string, any> };
 }
 
 export default EqueumGraphQLServerParams;
