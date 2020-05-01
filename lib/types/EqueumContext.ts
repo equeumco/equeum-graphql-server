@@ -18,6 +18,10 @@ class EqueumContext {
    */
   authHeader: string;
   /**
+   * User agent object includes requested user's information. i.e: browser and system information.
+   */
+  userAgent: object;
+  /**
    * Dataloader instances for batching queries
    */
   loaders: { [key: string]: Dataloader<string, any> };

@@ -1,6 +1,7 @@
 import { GraphQLSchema } from 'graphql';
 import { ApolloServer, gql } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
+import useragent from 'useragent';
 import { EqueumContext, EqueumGraphQLServerParams } from './types';
 import { getPackageVersion } from './utils';
 
@@ -37,6 +38,7 @@ class EqueumGraphQLServer {
         const authHeader: string = req.headers.authorization || '';
         const headerParts = authHeader.split(' ');
         const authToken = headerParts && headerParts.length > 1 ? headerParts[1] : '';
+        const userAgent = useragent.parse(null).toJSON();
         const loaderInstances = {};
         Object.keys(loaders).map((key) => {
           loaderInstances[key] = loaders[key]();
@@ -45,6 +47,7 @@ class EqueumGraphQLServer {
           user: req.user,
           authToken,
           authHeader,
+          userAgent,
           loaders:loaderInstances,
         };
       },

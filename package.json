@@ -1,6 +1,6 @@
 {
   "name": "equeum-graphql-server",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "GraphQL server implementation over Express exporting Equeum specific utilities.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -38,6 +38,7 @@
     "graphql": "^14.5.8",
     "graphql-tools": "^4.0.6",
     "graphql-type-json": "^0.3.1",
-    "type-graphql": "^0.17.6"
+    "type-graphql": "^0.17.6",
+    "useragent": "^2.3.0"
   }
 }

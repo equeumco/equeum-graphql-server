@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_express_1 = require("apollo-server-express");
 const federation_1 = require("@apollo/federation");
+const useragent_1 = __importDefault(require("useragent"));
 const utils_1 = require("./utils");
 /**
  * GraphQL server implementation
@@ -27,6 +31,7 @@ class EqueumGraphQLServer {
                 const authHeader = req.headers.authorization || '';
                 const headerParts = authHeader.split(' ');
                 const authToken = headerParts && headerParts.length > 1 ? headerParts[1] : '';
+                const userAgent = useragent_1.default.parse(null).toJSON();
                 const loaderInstances = {};
                 Object.keys(loaders).map((key) => {
                     loaderInstances[key] = loaders[key]();
@@ -35,6 +40,7 @@ class EqueumGraphQLServer {
                     user: req.user,
                     authToken,
                     authHeader,
+                    userAgent,
                     loaders: loaderInstances,
                 };
             },
