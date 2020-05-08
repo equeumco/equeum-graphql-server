@@ -55,6 +55,11 @@ class EqueumGraphQLServer {
         console.error(err);
         return err;
       },
+      engine: {
+        apiKey: 'service:equeum-graph:G6kztz2UtMz_JuSJAe9hyw',
+        debugPrintReports: true,
+        sendHeaders: { all: true },
+      },
     });
 
     server.applyMiddleware({ app });
