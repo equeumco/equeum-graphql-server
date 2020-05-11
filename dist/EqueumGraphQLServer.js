@@ -31,8 +31,6 @@ class EqueumGraphQLServer {
                 const authHeader = req.headers.authorization || '';
                 const headerParts = authHeader.split(' ');
                 const authToken = headerParts && headerParts.length > 1 ? headerParts[1] : '';
-                console.log(req.headers['user-agent']);
-                console.log("--------------");
                 const userAgent = useragent_1.default.parse(req.headers['user-agent']).toJSON();
                 const loaderInstances = {};
                 Object.keys(loaders).map((key) => {
