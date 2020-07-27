@@ -18,9 +18,13 @@ npm install git+ssh://github.com/equeumco/equeum-rest-server.git
 
 ## Installation
 
+To ensure the stability of our services we always specify exact version of the library that we are including. Therefore we are sure that 'npm install' will always install the same version no matter what. Developers then need to update the version for each service manually when that is needed (or together with routinely updating all outdated third-party packages).
+
 ```
-npm install git+ssh://github.com/equeumco/equeum-graphql-server.git
+npm install git+https://github.com/equeumco/equeum-graphql-server#X.Y.Z
 ```
+
+Where 'X.Y.Z' is the [latest version of the library](../../releases/latest).
 
 ## Working example
 
