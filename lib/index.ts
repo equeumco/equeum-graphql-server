@@ -5,6 +5,9 @@ export { default as RequireRoleAtLeast } from './decorators/RequireRoleAtLeast';
 // Context
 export { default as EqueumContext } from './types/EqueumContext';
 
+// Constants
+export { UserRoles } from './constants';
+
 // Errors
 export { default as NotAnOwnerError } from './entities/NotAnOwnerError';
 

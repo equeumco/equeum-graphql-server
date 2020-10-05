@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const type_graphql_1 = require("type-graphql");
 const apollo_server_express_1 = require("apollo-server-express");
+const constants_1 = require("../constants");
 /**
  * Decorator to be used for access control. By default we suppose that
  * all GraphQL resources are accessible to all users. If we want to limit
@@ -23,13 +24,7 @@ const apollo_server_express_1 = require("apollo-server-express");
  *
  * @params role - minimum role needed to access this resource.
  */
-const VALID_ROLES = [
-    'UNVERIFIED',
-    'LIMITED',
-    'USER',
-    'ADMIN',
-    'MACHINE',
-];
+const VALID_ROLES = Object.values(constants_1.UserRoles);
 const RequireRoleAtLeast = (minimumRole) => {
     return type_graphql_1.createMethodDecorator(({ context }, next) => __awaiter(void 0, void 0, void 0, function* () {
         const minimumRoleIndex = VALID_ROLES.indexOf(minimumRole);

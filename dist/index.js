@@ -8,6 +8,9 @@ exports.RequireRoleAtLeast = RequireRoleAtLeast_1.default;
 // Context
 var EqueumContext_1 = require("./types/EqueumContext");
 exports.EqueumContext = EqueumContext_1.default;
+// Constants
+var constants_1 = require("./constants");
+exports.UserRoles = constants_1.UserRoles;
 // Errors
 var NotAnOwnerError_1 = require("./entities/NotAnOwnerError");
 exports.NotAnOwnerError = NotAnOwnerError_1.default;

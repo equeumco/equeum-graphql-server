@@ -1,6 +1,7 @@
 import { createMethodDecorator } from 'type-graphql';
 import { AuthenticationError } from 'apollo-server-express';
 import { EqueumContext } from '../types';
+import { UserRoles } from '../constants';
 
 /**
  * Decorator to be used for access control. By default we suppose that
@@ -15,13 +16,7 @@ import { EqueumContext } from '../types';
  * @params role - minimum role needed to access this resource.
  */
 
-const VALID_ROLES: string[] = [
-  'UNVERIFIED',
-  'LIMITED',
-  'USER',
-  'ADMIN',
-  'MACHINE',
-];
+const VALID_ROLES: string[] = Object.values(UserRoles);
 
 const RequireRoleAtLeast = (minimumRole: string) => {
   return createMethodDecorator<EqueumContext>(async ({ context }, next) => {
