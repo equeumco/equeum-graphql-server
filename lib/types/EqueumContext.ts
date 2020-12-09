@@ -22,6 +22,10 @@ class EqueumContext {
    */
   userAgent: object;
   /**
+   * A flag which shows if request is coming from. i.e: internal-app.equeum.com
+   */
+  isInternal: boolean;
+  /**
    * Dataloader instances for batching queries
    */
   loaders: { [key: string]: Dataloader<string, any> };
