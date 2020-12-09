@@ -36,7 +36,6 @@ class EqueumGraphQLServer {
                 Object.keys(loaders).map((key) => {
                     loaderInstances[key] = loaders[key]();
                 });
-                console.log('----inside equeum graphql server-----', req.isInternal);
                 // isInternal flag should be set inside request object if you use right equeum-rest-server version.
                 return {
                     authToken,
