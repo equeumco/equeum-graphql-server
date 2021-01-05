@@ -44,13 +44,13 @@ class EqueumGraphQLServer {
           loaderInstances[key] = loaders[key]();
         });
         // isInternal flag should be set inside request object if you use right equeum-rest-server version.
-        console.log('----equeum-graphql-server------', req.isInternal);
+        console.log('----equeum-graphql-server------', req.headers['is-internal']);
         return {
           authToken,
           authHeader,
           userAgent,
           user: req.user,
-          isInternal: req.isInternal,
+          isInternal: req.headers['is-internal'] === 'true',
           loaders:loaderInstances,
         };
       },
