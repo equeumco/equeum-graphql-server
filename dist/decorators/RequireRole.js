@@ -22,12 +22,13 @@ const apollo_server_express_1 = require("apollo-server-express");
  *
  * @param roles - role or roles needed to acces this resource
  */
-// tslint:disable-next-line:variable-name
 const RequireRole = (roles) => {
     return type_graphql_1.createMethodDecorator(({ context }, next) => __awaiter(void 0, void 0, void 0, function* () {
         if (Array.isArray(roles)) {
             if (roles.indexOf(context.user.role) === -1) {
-                throw new apollo_server_express_1.AuthenticationError(`To access this resource you need to have ${roles.map(role => `'${role}'`).join(' or ')} role.`);
+                throw new apollo_server_express_1.AuthenticationError(`To access this resource you need to have ${roles
+                    .map(role => `'${role}'`)
+                    .join(' or ')} role.`);
             }
         }
         else {

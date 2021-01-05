@@ -1,0 +1,320 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>EqueumContext | equeum-graphql-server</title>
+	<meta name="description" content="Documentation for equeum-graphql-server">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">equeum-graphql-server</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_lib_types_equeumcontext_.html">&quot;lib/types/EqueumContext&quot;</a>
+				</li>
+				<li>
+					<a href="_lib_types_equeumcontext_.equeumcontext.html">EqueumContext</a>
+				</li>
+			</ul>
+			<h1>Class EqueumContext</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Context object that will be passed to all resolvers.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">EqueumContext</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_types_equeumcontext_.equeumcontext.html#authheader" class="tsd-kind-icon">auth<wbr>Header</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_types_equeumcontext_.equeumcontext.html#authtoken" class="tsd-kind-icon">auth<wbr>Token</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_types_equeumcontext_.equeumcontext.html#isinternal" class="tsd-kind-icon">is<wbr>Internal</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_types_equeumcontext_.equeumcontext.html#loaders" class="tsd-kind-icon">loaders</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_types_equeumcontext_.equeumcontext.html#user" class="tsd-kind-icon">user</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_types_equeumcontext_.equeumcontext.html#useragent" class="tsd-kind-icon">user<wbr>Agent</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="authheader" class="tsd-anchor"></a>
+					<h3>auth<wbr>Header</h3>
+					<div class="tsd-signature tsd-kind-icon">auth<wbr>Header<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/da0c001/lib/types/EqueumContext.ts#L19">lib/types/EqueumContext.ts:19</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Authentication header to be user when calling other services. Is
+								the same as authToken except contains full header with &#39;Bearer &#39;
+							prepended.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="authtoken" class="tsd-anchor"></a>
+					<h3>auth<wbr>Token</h3>
+					<div class="tsd-signature tsd-kind-icon">auth<wbr>Token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/da0c001/lib/types/EqueumContext.ts#L13">lib/types/EqueumContext.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Authentication token to be used when calling other services.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="isinternal" class="tsd-anchor"></a>
+					<h3>is<wbr>Internal</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Internal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/da0c001/lib/types/EqueumContext.ts#L27">lib/types/EqueumContext.ts:27</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A flag which shows if request is coming from. i.e: internal-app.equeum.com</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="loaders" class="tsd-anchor"></a>
+					<h3>loaders</h3>
+					<div class="tsd-signature tsd-kind-icon">loaders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/da0c001/lib/types/EqueumContext.ts#L31">lib/types/EqueumContext.ts:31</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Dataloader instances for batching queries</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">Dataloader</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="user" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> user</h3>
+					<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_types_authenticateduserdata_.authenticateduserdata.html" class="tsd-signature-type">AuthenticatedUserData</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/da0c001/lib/types/EqueumContext.ts#L9">lib/types/EqueumContext.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Object containing the data of user that is making the request.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="useragent" class="tsd-anchor"></a>
+					<h3>user<wbr>Agent</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Agent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/da0c001/lib/types/EqueumContext.ts#L23">lib/types/EqueumContext.ts:23</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>User agent object includes requested user&#39;s information. i.e: browser and system information.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_equeumgraphqlserver_.html">&quot;lib/<wbr>Equeum<wbr>GraphQLServer&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_constants_.html">&quot;lib/constants&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_decorators_requirerole_.html">&quot;lib/decorators/<wbr>Require<wbr>Role&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_decorators_requireroleatleast_.html">&quot;lib/decorators/<wbr>Require<wbr>Role<wbr>AtLeast&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_decorators_index_.html">&quot;lib/decorators/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_entities_notanownererror_.html">&quot;lib/entities/<wbr>Not<wbr>AnOwner<wbr>Error&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_entities_index_.html">&quot;lib/entities/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_index_.html">&quot;lib/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_types_authenticateduserdata_.html">&quot;lib/types/<wbr>Authenticated<wbr>User<wbr>Data&quot;</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_lib_types_equeumcontext_.html">&quot;lib/types/<wbr>Equeum<wbr>Context&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_types_equeumgraphqlserverparams_.html">&quot;lib/types/<wbr>Equeum<wbr>GraphQLServer<wbr>Params&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_types_index_.html">&quot;lib/types/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_utils_getpackageversion_.html">&quot;lib/utils/get<wbr>Package<wbr>Version&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_lib_utils_index_.html">&quot;lib/utils/index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
+						<a href="_lib_types_equeumcontext_.equeumcontext.html" class="tsd-kind-icon">Equeum<wbr>Context</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_lib_types_equeumcontext_.equeumcontext.html#authheader" class="tsd-kind-icon">auth<wbr>Header</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_lib_types_equeumcontext_.equeumcontext.html#authtoken" class="tsd-kind-icon">auth<wbr>Token</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_lib_types_equeumcontext_.equeumcontext.html#isinternal" class="tsd-kind-icon">is<wbr>Internal</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_lib_types_equeumcontext_.equeumcontext.html#loaders" class="tsd-kind-icon">loaders</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_lib_types_equeumcontext_.equeumcontext.html#user" class="tsd-kind-icon">user</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_lib_types_equeumcontext_.equeumcontext.html#useragent" class="tsd-kind-icon">user<wbr>Agent</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

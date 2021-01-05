@@ -12,10 +12,10 @@ const utils_1 = require("./utils");
  */
 class EqueumGraphQLServer {
     /**
-     * Configures and sets up the server and binds it to Express app.
-     *
-     * @param params Server parameters
-     */
+   * Configures and sets up the server and binds it to Express app.
+   *
+   * @param params Server parameters
+   */
     constructor(params) {
         const { app, typeDefs, loaders = {}, resolvers, } = params;
         const federatedTypeDefs = apollo_server_express_1.gql(typeDefs);
@@ -36,7 +36,9 @@ class EqueumGraphQLServer {
                 Object.keys(loaders).map((key) => {
                     loaderInstances[key] = loaders[key]();
                 });
-                // isInternal flag should be set inside request object if you use right equeum-rest-server version.
+                // isInternal flag should be set inside request object
+                // if you use right equeum-rest-server version.
+                console.log('------equeumm-graphql-server----------', req.isInternal);
                 return {
                     authToken,
                     authHeader,

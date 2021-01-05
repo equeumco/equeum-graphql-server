@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>equeum-graphql-server</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for equeum-graphql-server">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> equeum-graphql-server</h1>
+			<h1>equeum-graphql-server</h1>
 		</div>
 	</div>
 </header>
@@ -72,39 +72,42 @@
 					<h2>Requirements</h2>
 				</a>
 				<p>Scripts inside package.json rely on <a href="https://www.npmjs.com/package/npx">npx</a> to be installed globally. To install it run:</p>
-				<pre><code>npm <span class="hljs-keyword">install</span> -g npx</code></pre><p>You also need EqueumRESTServer as it provides standard implementation for web service and provides authentification and security.</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> -g npx</code></pre>
+				<p>You also need EqueumRESTServer as it provides standard implementation for web service and provides authentification and security.</p>
 				<pre><code>npm install git+ssh:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/equeumco/</span>equeum-rest-server.git</code></pre>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code>npm install git+ssh:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/equeumco/</span>equeum-graphql-server.git</code></pre>
+				<p>To ensure the stability of our services we always specify exact version of the library that we are including. Therefore we are sure that &#39;npm install&#39; will always install the same version no matter what. Developers then need to update the version for each service manually when that is needed (or together with routinely updating all outdated third-party packages).</p>
+				<pre><code>npm install git+https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/equeumco/</span>equeum-graphql-server<span class="hljs-comment">#X.Y.Z</span></code></pre>
+				<p>Where &#39;X.Y.Z&#39; is the <a href="../../releases/latest">latest version of the library</a>.</p>
 				<a href="#working-example" id="working-example" style="color: inherit; text-decoration: none;">
 					<h2>Working example</h2>
 				</a>
-				<pre><code><span class="hljs-keyword">import</span> express, { Router, Request, Response } <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
-<span class="hljs-keyword">import</span> EqueumRESTServer <span class="hljs-keyword">from</span> <span class="hljs-string">'equeum-rest-server'</span>;
-<span class="hljs-keyword">import</span> EqueumGraphQLServer <span class="hljs-keyword">from</span> <span class="hljs-string">'equeum-graphql-server'</span>;
+				<pre><code><span class="hljs-keyword">import</span> express, { Router, Request, Response } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;express&#x27;</span>;
+<span class="hljs-keyword">import</span> EqueumRESTServer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;equeum-rest-server&#x27;</span>;
+<span class="hljs-keyword">import</span> EqueumGraphQLServer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;equeum-graphql-server&#x27;</span>;
 
 const app = express();
 
-const typeDefs = `<span class="javascript">
-  type Query {
-    <span class="hljs-attr">testQuery</span>: <span class="hljs-built_in">String</span>
+const typeDefs = `
+  <span class="hljs-keyword">type</span> Query {
+    testQuery: String
   }
-</span>`;
+`;
 
 const resolvers = {
   Query: {
-    testQuery: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">'Test response'</span>
+    testQuery: () =&gt; <span class="hljs-string">&#x27;Test response&#x27;</span>
   }
 };
 
-<span class="hljs-keyword">new</span> EqueumRESTServer({
+<span class="hljs-built_in">new</span> EqueumRESTServer({
   app,
-  <span class="hljs-regexp">//</span> We need to pass <span class="hljs-keyword">this</span> here to make sure /graphql route <span class="hljs-keyword">is</span> just checked <span class="hljs-keyword">for</span> auth
-  <span class="hljs-regexp">//</span> but <span class="hljs-keyword">not</span> handled <span class="hljs-keyword">by</span> REST server <span class="hljs-keyword">and</span> left <span class="hljs-keyword">for</span> GraphQL server
-  passThroughRoutes: [<span class="hljs-string">'/graphql'</span>],
-  addAuthToRoutes: [<span class="hljs-string">'/graphql]
+  // We need <span class="hljs-keyword">to</span> pass this here <span class="hljs-keyword">to</span> make sure /graphql route <span class="hljs-keyword">is</span> just checked <span class="hljs-keyword">for</span> auth
+  // but <span class="hljs-keyword">not</span> handled <span class="hljs-keyword">by</span> REST <span class="hljs-keyword">server</span> <span class="hljs-keyword">and</span> left <span class="hljs-keyword">for</span> GraphQL <span class="hljs-keyword">server</span>
+  passThroughRoutes: [<span class="hljs-string">&#x27;/graphql&#x27;</span>],
+  addAuthToRoutes: [<span class="hljs-string">&#x27;/graphql]
 });
 new EqueumGraphQLServer({
   app,
@@ -113,10 +116,11 @@ new EqueumGraphQLServer({
 });
 
 const port: number = 4000;
-app.listen(port, () =&gt; console.log(`Server is listening on http://localhost:${port}`));</span></code></pre><p>If using <a href="https://typegraphql.ml/">TypeGraphQL</a> for automatically generating schema you first build type definitions and resolvers and then pass them to the constructor.</p>
-				<pre><code><span class="hljs-keyword">import</span> { buildTypeDefsAndResolvers } <span class="hljs-keyword">from</span> <span class="hljs-string">'type-graphql'</span>;
+app.listen(port, () =&gt; console.log(`Server is listening on http://localhost:${port}`));</span></code></pre>
+				<p>If using <a href="https://typegraphql.ml/">TypeGraphQL</a> for automatically generating schema you first build type definitions and resolvers and then pass them to the constructor.</p>
+				<pre><code><span class="hljs-keyword">import</span> { buildTypeDefsAndResolvers } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;type-graphql&#x27;</span>;
 
-buildTypeDefsAndResolvers({ resolvers: [ ... ] }).<span class="hljs-keyword">then</span>(<span class="hljs-function"><span class="hljs-params">({ typeDefs, resolvers })</span> =&gt;</span> {
+buildTypeDefsAndResolvers({ <span class="hljs-attr">resolvers</span>: [ ... ] }).then(<span class="hljs-function">(<span class="hljs-params">{ typeDefs, resolvers }</span>) =&gt;</span> {
   <span class="hljs-keyword">new</span> EqueumGraphQLServer({
     app,
     typeDefs,
@@ -146,6 +150,14 @@ buildTypeDefsAndResolvers({ resolvers: [ ... ] }).<span class="hljs-keyword">the
 					<h4>resolvers: IResolvers&lt;any, any&gt; | IResolvers&lt;any, any&gt;[]</h4>
 				</a>
 				<p>Resolver functions</p>
+				<a href="#loaders--key-string-dataloaderltstring-anygt-" id="loaders--key-string-dataloaderltstring-anygt-" style="color: inherit; text-decoration: none;">
+					<h4>loaders: { [key: string]: DataLoader&lt;string, any&gt; }</h4>
+				</a>
+				<p>Custom data loaders. We use <a href="https://github.com/graphql/dataloader">DataLoader</a> utility to batch and optimise resolving queries. Loaders passed here will be added to context and available to use in your resolvers.</p>
+				<a href="#useragent-object" id="useragent-object" style="color: inherit; text-decoration: none;">
+					<h4>userAgent: object</h4>
+				</a>
+				<p>Requested user&#39;s system and browser information. We use <a href="https://github.com/3rd-Eden/useragent">useragent</a> to parse this information from request headers. </p>
 				<a href="#types" id="types" style="color: inherit; text-decoration: none;">
 					<h2>Types</h2>
 				</a>
@@ -160,14 +172,15 @@ buildTypeDefsAndResolvers({ resolvers: [ ... ] }).<span class="hljs-keyword">the
 					<h3>RequireRole</h3>
 				</a>
 				<p>Decorator to be used for access control. By default we suppose that all GraphQL resources are accessible to all users. If we want to limit the access to specific resource, we can add RequireROle decorator to resolver annotation. Valid roles are &#39;ADMIN&#39; or &#39;MACHINE&#39;, you can also supply multiple roles that are allowed to access this resource by providing an array like [&#39;ADMIN&#39;, &#39;MACHINE&#39;].</p>
-				<pre><code><span class="hljs-meta">@RequireRole</span>(<span class="hljs-string">'ADMIN'</span>)
+				<pre><code><span class="hljs-meta">@RequireRole</span>(<span class="hljs-string">&#x27;ADMIN&#x27;</span>)
 <span class="hljs-meta">@Query</span>(<span class="hljs-function"><span class="hljs-params">returns</span> =&gt;</span> <span class="hljs-built_in">String</span>)
 <span class="hljs-keyword">async</span> test(): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">string</span>&gt; {
-  <span class="hljs-keyword">return</span> <span class="hljs-string">'I will only be seen by ADMIN'</span>;
-}</code></pre><pre><code><span class="hljs-meta">@RequireRole</span>([<span class="hljs-string">'ADMIN'</span>, <span class="hljs-string">'MACHINE'</span>])
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;I will only be seen by ADMIN&#x27;</span>;
+}</code></pre>
+				<pre><code><span class="hljs-meta">@RequireRole</span>([<span class="hljs-string">&#x27;ADMIN&#x27;</span>, <span class="hljs-string">&#x27;MACHINE&#x27;</span>])
 <span class="hljs-meta">@Query</span>(<span class="hljs-function"><span class="hljs-params">returns</span> =&gt;</span> <span class="hljs-built_in">String</span>)
 <span class="hljs-keyword">async</span> test(): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">string</span>&gt; {
-  <span class="hljs-keyword">return</span> <span class="hljs-string">'I will only be seen by ADMIN or MACHINE'</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;I will only be seen by ADMIN or MACHINE&#x27;</span>;
 }</code></pre>
 				<a href="#error-handling" id="error-handling" style="color: inherit; text-decoration: none;">
 					<h2>Error handling</h2>
@@ -190,35 +203,47 @@ buildTypeDefsAndResolvers({ resolvers: [ ... ] }).<span class="hljs-keyword">the
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_equeumgraphqlserver_.html">"<wbr>Equeum<wbr>GraphQLServer"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_equeumgraphqlserver_.html">&quot;lib/<wbr>Equeum<wbr>GraphQLServer&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_decorators_requirerole_.html">"decorators/<wbr>Require<wbr>Role"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_constants_.html">&quot;lib/constants&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_decorators_index_.html">"decorators/index"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_decorators_requirerole_.html">&quot;lib/decorators/<wbr>Require<wbr>Role&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_entities_notanownererror_.html">"entities/<wbr>Not<wbr>AnOwner<wbr>Error"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_decorators_requireroleatleast_.html">&quot;lib/decorators/<wbr>Require<wbr>Role<wbr>AtLeast&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_entities_index_.html">"entities/index"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_decorators_index_.html">&quot;lib/decorators/index&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_entities_notanownererror_.html">&quot;lib/entities/<wbr>Not<wbr>AnOwner<wbr>Error&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_types_authenticateduserdata_.html">"types/<wbr>Authenticated<wbr>User<wbr>Data"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_entities_index_.html">&quot;lib/entities/index&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_types_equeumcontext_.html">"types/<wbr>Equeum<wbr>Context"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_index_.html">&quot;lib/index&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_types_equeumgraphqlserverparams_.html">"types/<wbr>Equeum<wbr>GraphQLServer<wbr>Params"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_authenticateduserdata_.html">&quot;lib/types/<wbr>Authenticated<wbr>User<wbr>Data&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_types_index_.html">"types/index"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_equeumcontext_.html">&quot;lib/types/<wbr>Equeum<wbr>Context&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_equeumgraphqlserverparams_.html">&quot;lib/types/<wbr>Equeum<wbr>GraphQLServer<wbr>Params&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_types_index_.html">&quot;lib/types/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_utils_getpackageversion_.html">&quot;lib/utils/get<wbr>Package<wbr>Version&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_lib_utils_index_.html">&quot;lib/utils/index&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -234,57 +259,17 @@ buildTypeDefsAndResolvers({ resolvers: [ ... ] }).<span class="hljs-keyword">the
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
@@ -294,6 +279,5 @@ buildTypeDefsAndResolvers({ resolvers: [ ... ] }).<span class="hljs-keyword">the
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

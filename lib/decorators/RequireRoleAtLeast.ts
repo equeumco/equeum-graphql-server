@@ -19,24 +19,24 @@ import { UserRoles } from '../constants';
 const VALID_ROLES: string[] = Object.values(UserRoles);
 
 const RequireRoleAtLeast = (minimumRole: string) => {
-  return createMethodDecorator<EqueumContext>(async ({ context }, next) => {
-    const minimumRoleIndex = VALID_ROLES.indexOf(minimumRole);
-    const roleIndex = VALID_ROLES.indexOf(context.user.role);
-    if (minimumRoleIndex === -1) {
-      throw new AuthenticationError(`${minimumRole} is not a valid role.`);
-    }
-    if (roleIndex === -1) {
-      throw new AuthenticationError(
-        `${context.user.role} is not a valid role.`,
-      );
-    }
-    if (minimumRoleIndex > roleIndex) {
-      throw new AuthenticationError(
-        `To access this resource, you need to have at least ${minimumRole} role.`,
-      );
-    }
-    return next();
-  });
+    return createMethodDecorator<EqueumContext>(async ({ context }, next) => {
+        const minimumRoleIndex = VALID_ROLES.indexOf(minimumRole);
+        const roleIndex = VALID_ROLES.indexOf(context.user.role);
+        if (minimumRoleIndex === -1) {
+            throw new AuthenticationError(`${minimumRole} is not a valid role.`);
+        }
+        if (roleIndex === -1) {
+            throw new AuthenticationError(
+                `${context.user.role} is not a valid role.`,
+            );
+        }
+        if (minimumRoleIndex > roleIndex) {
+            throw new AuthenticationError(
+                `To access this resource, you need to have at least ${minimumRole} role.`,
+            );
+        }
+        return next();
+    });
 };
 
 export default RequireRoleAtLeast;

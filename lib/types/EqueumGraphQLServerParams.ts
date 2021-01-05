@@ -6,14 +6,14 @@ import DataLoader from 'dataloader';
  * of EqueumGraphQLServer.
  */
 interface EqueumGraphQLServerParams {
-  /** Express app object to build the server over */
-  app: Application;
-  /** GraphQL type definitions */
-  typeDefs: any;
-  /** Resolver functions */
-  resolvers: IResolvers<any, any> | IResolvers<any, any>[];
-  /** dataloader instance creators */
-  loaders?: { [key: string]: () => DataLoader<string, any> };
+    /** Express app object to build the server over */
+    app: Application;
+    /** GraphQL type definitions */
+    typeDefs: any;
+    /** Resolver functions */
+    resolvers: IResolvers<any, any> | IResolvers<any, any>[];
+    /** dataloader instance creators */
+    loaders?: { [key: string]: () => DataLoader<string, any> };
 }
 
 export default EqueumGraphQLServerParams;
