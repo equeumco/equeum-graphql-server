@@ -1,7 +1,7 @@
-export declare const UserRoles: {
-    UNVERIFIED: string;
-    LIMITED: string;
-    USER: string;
-    ADMIN: string;
-    MACHINE: string;
-};
+export declare enum UserRoles {
+    UNVERIFIED = "UNVERIFIED",
+    LIMITED = "LIMITED",
+    USER = "USER",
+    ADMIN = "ADMIN",
+    MACHINE = "MACHINE"
+}

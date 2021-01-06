@@ -11,8 +11,8 @@ interface AuthenticatedUserData {
     /** E-mail address of the user (only found in user tokens) */
     email?: string;
     /** When user is a machine, this holds name by which machine
-     * can be identified (only found in M2M tokens)
-     */
+   * can be identified (only found in M2M tokens)
+   */
     machineName?: string;
     /** Indicates if request is made via external API */
     isExternal?: boolean;
