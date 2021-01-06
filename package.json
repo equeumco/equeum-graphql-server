@@ -14,7 +14,7 @@
   "homepage": "https://github.com/equeumco/equeum-graphql-server#readme",
   "scripts": {
     "build": "npx tsc",
-    "build:docs": "npx typedoc --out docs/ lib/",
+    "build:docs": "npx typedoc --out docs/ lib/ && sh commit-docs.sh",
     "dev": "npx tsc -w",
     "lint": "npx eslint --ext .ts lib/",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,8 +23,7 @@
   "license": "ISC",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint & npm run build",
-      "pre-push": "npm run build:docs"
+      "pre-commit": "npm run lint & npm run build & npm run build:docs"
     }
   },
   "devDependencies": {
