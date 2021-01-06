@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for equeum-graphql-server">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -40,8 +41,6 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -51,11 +50,6 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
 			<h1>equeum-graphql-server</h1>
 		</div>
 	</div>
@@ -72,61 +66,66 @@
 					<h2>Requirements</h2>
 				</a>
 				<p>Scripts inside package.json rely on <a href="https://www.npmjs.com/package/npx">npx</a> to be installed globally. To install it run:</p>
-				<pre><code>npm <span class="hljs-keyword">install</span> -g npx</code></pre>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> -</span><span style="color: #001080">g</span><span style="color: #000000"> </span><span style="color: #001080">npx</span>
+</code></pre>
 				<p>You also need EqueumRESTServer as it provides standard implementation for web service and provides authentification and security.</p>
-				<pre><code>npm install git+ssh:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/equeumco/</span>equeum-rest-server.git</code></pre>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">git</span><span style="color: #000000">+ssh:</span><span style="color: #008000">//github.com/equeumco/equeum-rest-server.git</span>
+</code></pre>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
 				<p>To ensure the stability of our services we always specify exact version of the library that we are including. Therefore we are sure that &#39;npm install&#39; will always install the same version no matter what. Developers then need to update the version for each service manually when that is needed (or together with routinely updating all outdated third-party packages).</p>
-				<pre><code>npm install git+https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/equeumco/</span>equeum-graphql-server<span class="hljs-comment">#X.Y.Z</span></code></pre>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> </span><span style="color: #001080">git</span><span style="color: #000000">+https:</span><span style="color: #008000">//github.com/equeumco/equeum-graphql-server#X.Y.Z</span>
+</code></pre>
 				<p>Where &#39;X.Y.Z&#39; is the <a href="../../releases/latest">latest version of the library</a>.</p>
 				<a href="#working-example" id="working-example" style="color: inherit; text-decoration: none;">
 					<h2>Working example</h2>
 				</a>
-				<pre><code><span class="hljs-keyword">import</span> express, { Router, Request, Response } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;express&#x27;</span>;
-<span class="hljs-keyword">import</span> EqueumRESTServer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;equeum-rest-server&#x27;</span>;
-<span class="hljs-keyword">import</span> EqueumGraphQLServer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;equeum-graphql-server&#x27;</span>;
+				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">express</span><span style="color: #000000">, { </span><span style="color: #001080">Router</span><span style="color: #000000">, </span><span style="color: #001080">Request</span><span style="color: #000000">, </span><span style="color: #001080">Response</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;express&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">EqueumRESTServer</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;equeum-rest-server&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">EqueumGraphQLServer</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;equeum-graphql-server&#039;</span><span style="color: #000000">;</span>
 
-const app = express();
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">app</span><span style="color: #000000"> = </span><span style="color: #795E26">express</span><span style="color: #000000">();</span>
 
-const typeDefs = `
-  <span class="hljs-keyword">type</span> Query {
-    testQuery: String
-  }
-`;
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">typeDefs</span><span style="color: #000000"> = </span><span style="color: #A31515">`</span>
+<span style="color: #A31515">  type Query {</span>
+<span style="color: #A31515">    testQuery: String</span>
+<span style="color: #A31515">  }</span>
+<span style="color: #A31515">`</span><span style="color: #000000">;</span>
 
-const resolvers = {
-  Query: {
-    testQuery: () =&gt; <span class="hljs-string">&#x27;Test response&#x27;</span>
-  }
-};
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">resolvers</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">  </span><span style="color: #001080">Query:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #795E26">testQuery</span><span style="color: #001080">:</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Test response&#039;</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">};</span>
 
-<span class="hljs-built_in">new</span> EqueumRESTServer({
-  app,
-  // We need <span class="hljs-keyword">to</span> pass this here <span class="hljs-keyword">to</span> make sure /graphql route <span class="hljs-keyword">is</span> just checked <span class="hljs-keyword">for</span> auth
-  // but <span class="hljs-keyword">not</span> handled <span class="hljs-keyword">by</span> REST <span class="hljs-keyword">server</span> <span class="hljs-keyword">and</span> left <span class="hljs-keyword">for</span> GraphQL <span class="hljs-keyword">server</span>
-  passThroughRoutes: [<span class="hljs-string">&#x27;/graphql&#x27;</span>],
-  addAuthToRoutes: [<span class="hljs-string">&#x27;/graphql]
-});
-new EqueumGraphQLServer({
-  app,
-  typeDefs,
-  resolvers
-});
+<span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">EqueumRESTServer</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">app</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #008000">// We need to pass this here to make sure /graphql route is just checked for auth</span>
+<span style="color: #000000">  </span><span style="color: #008000">// but not handled by REST server and left for GraphQL server</span>
+<span style="color: #000000">  </span><span style="color: #001080">passThroughRoutes:</span><span style="color: #000000"> [</span><span style="color: #A31515">&#039;/graphql&#039;</span><span style="color: #000000">],</span>
+<span style="color: #000000">  </span><span style="color: #001080">addAuthToRoutes:</span><span style="color: #000000"> [</span><span style="color: #A31515">&#039;/graphql</span><span style="color: #CD3131">]</span>
+<span style="color: #000000">});</span>
+<span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">EqueumGraphQLServer</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">app</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">typeDefs</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">resolvers</span>
+<span style="color: #000000">});</span>
 
-const port: number = 4000;
-app.listen(port, () =&gt; console.log(`Server is listening on http://localhost:${port}`));</span></code></pre>
+<span style="color: #001080">const</span><span style="color: #000000"> </span><span style="color: #001080">port</span><span style="color: #000000">: </span><span style="color: #001080">number</span><span style="color: #000000"> = </span><span style="color: #098658">4000</span><span style="color: #000000">;</span>
+<span style="color: #001080">app</span><span style="color: #000000">.</span><span style="color: #795E26">listen</span><span style="color: #000000">(</span><span style="color: #001080">port</span><span style="color: #000000">, () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`Server is listening on http://localhost:</span><span style="color: #0000FF">${</span><span style="color: #001080">port</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">));</span>
+</code></pre>
 				<p>If using <a href="https://typegraphql.ml/">TypeGraphQL</a> for automatically generating schema you first build type definitions and resolvers and then pass them to the constructor.</p>
-				<pre><code><span class="hljs-keyword">import</span> { buildTypeDefsAndResolvers } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;type-graphql&#x27;</span>;
+				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">buildTypeDefsAndResolvers</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;type-graphql&#039;</span><span style="color: #000000">;</span>
 
-buildTypeDefsAndResolvers({ <span class="hljs-attr">resolvers</span>: [ ... ] }).then(<span class="hljs-function">(<span class="hljs-params">{ typeDefs, resolvers }</span>) =&gt;</span> {
-  <span class="hljs-keyword">new</span> EqueumGraphQLServer({
-    app,
-    typeDefs,
-    resolvers,
-  });
-});</code></pre>
+<span style="color: #795E26">buildTypeDefsAndResolvers</span><span style="color: #000000">({ </span><span style="color: #001080">resolvers:</span><span style="color: #000000"> [ ... ] }).</span><span style="color: #795E26">then</span><span style="color: #000000">(({ </span><span style="color: #001080">typeDefs</span><span style="color: #000000">, </span><span style="color: #001080">resolvers</span><span style="color: #000000"> }) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">EqueumGraphQLServer</span><span style="color: #000000">({</span>
+<span style="color: #000000">    </span><span style="color: #001080">app</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">typeDefs</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">resolvers</span><span style="color: #000000">,</span>
+<span style="color: #000000">  });</span>
+<span style="color: #000000">});</span>
+</code></pre>
 				<a href="#equeumgraphqlserver-default-export" id="equeumgraphqlserver-default-export" style="color: inherit; text-decoration: none;">
 					<h2>EqueumGraphQLServer (default export)</h2>
 				</a>
@@ -172,16 +171,18 @@ buildTypeDefsAndResolvers({ <span class="hljs-attr">resolvers</span>: [ ... ] })
 					<h3>RequireRole</h3>
 				</a>
 				<p>Decorator to be used for access control. By default we suppose that all GraphQL resources are accessible to all users. If we want to limit the access to specific resource, we can add RequireROle decorator to resolver annotation. Valid roles are &#39;ADMIN&#39; or &#39;MACHINE&#39;, you can also supply multiple roles that are allowed to access this resource by providing an array like [&#39;ADMIN&#39;, &#39;MACHINE&#39;].</p>
-				<pre><code><span class="hljs-meta">@RequireRole</span>(<span class="hljs-string">&#x27;ADMIN&#x27;</span>)
-<span class="hljs-meta">@Query</span>(<span class="hljs-function"><span class="hljs-params">returns</span> =&gt;</span> <span class="hljs-built_in">String</span>)
-<span class="hljs-keyword">async</span> test(): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">string</span>&gt; {
-  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;I will only be seen by ADMIN&#x27;</span>;
-}</code></pre>
-				<pre><code><span class="hljs-meta">@RequireRole</span>([<span class="hljs-string">&#x27;ADMIN&#x27;</span>, <span class="hljs-string">&#x27;MACHINE&#x27;</span>])
-<span class="hljs-meta">@Query</span>(<span class="hljs-function"><span class="hljs-params">returns</span> =&gt;</span> <span class="hljs-built_in">String</span>)
-<span class="hljs-keyword">async</span> test(): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">string</span>&gt; {
-  <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;I will only be seen by ADMIN or MACHINE&#x27;</span>;
-}</code></pre>
+				<pre><code><span style="color: #000000">@</span><span style="color: #795E26">RequireRole</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ADMIN&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">@</span><span style="color: #795E26">Query</span><span style="color: #000000">(</span><span style="color: #001080">returns</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">String</span><span style="color: #000000">)</span>
+<span style="color: #001080">async</span><span style="color: #000000"> </span><span style="color: #795E26">test</span><span style="color: #000000">(): </span><span style="color: #267F99">Promise</span><span style="color: #000000">&lt;</span><span style="color: #001080">string</span><span style="color: #000000">&gt; {</span>
+<span style="color: #000000">  return </span><span style="color: #A31515">&#039;I will only be seen by ADMIN&#039;</span><span style="color: #001080">;</span>
+<span style="color: #001080">}</span>
+</code></pre>
+				<pre><code><span style="color: #000000">@</span><span style="color: #795E26">RequireRole</span><span style="color: #000000">([</span><span style="color: #A31515">&#039;ADMIN&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;MACHINE&#039;</span><span style="color: #000000">])</span>
+<span style="color: #000000">@</span><span style="color: #795E26">Query</span><span style="color: #000000">(</span><span style="color: #001080">returns</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">String</span><span style="color: #000000">)</span>
+<span style="color: #001080">async</span><span style="color: #000000"> </span><span style="color: #795E26">test</span><span style="color: #000000">(): </span><span style="color: #267F99">Promise</span><span style="color: #000000">&lt;</span><span style="color: #001080">string</span><span style="color: #000000">&gt; {</span>
+<span style="color: #000000">  return </span><span style="color: #A31515">&#039;I will only be seen by ADMIN or MACHINE&#039;</span><span style="color: #001080">;</span>
+<span style="color: #001080">}</span>
+</code></pre>
 				<a href="#error-handling" id="error-handling" style="color: inherit; text-decoration: none;">
 					<h2>Error handling</h2>
 				</a>
@@ -200,50 +201,50 @@ buildTypeDefsAndResolvers({ <span class="hljs-attr">resolvers</span>: [ ... ] })
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_equeumgraphqlserver_.html">&quot;lib/<wbr>Equeum<wbr>GraphQLServer&quot;</a>
+						<a href="modules/equeumgraphqlserver.html">Equeum<wbr>GraphQLServer</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_constants_.html">&quot;lib/constants&quot;</a>
+						<a href="modules/constants.html">constants</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_decorators_requirerole_.html">&quot;lib/decorators/<wbr>Require<wbr>Role&quot;</a>
+						<a href="modules/decorators.html">decorators</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_decorators_requireroleatleast_.html">&quot;lib/decorators/<wbr>Require<wbr>Role<wbr>AtLeast&quot;</a>
+						<a href="modules/decorators_requirerole.html">decorators/<wbr>Require<wbr>Role</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_decorators_index_.html">&quot;lib/decorators/index&quot;</a>
+						<a href="modules/decorators_requireroleatleast.html">decorators/<wbr>Require<wbr>Role<wbr>AtLeast</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_entities_notanownererror_.html">&quot;lib/entities/<wbr>Not<wbr>AnOwner<wbr>Error&quot;</a>
+						<a href="modules/entities.html">entities</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_entities_index_.html">&quot;lib/entities/index&quot;</a>
+						<a href="modules/entities_notanownererror.html">entities/<wbr>Not<wbr>AnOwner<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_index_.html">&quot;lib/index&quot;</a>
+						<a href="modules/index.html">index</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_types_authenticateduserdata_.html">&quot;lib/types/<wbr>Authenticated<wbr>User<wbr>Data&quot;</a>
+						<a href="modules/types.html">types</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_types_equeumcontext_.html">&quot;lib/types/<wbr>Equeum<wbr>Context&quot;</a>
+						<a href="modules/types_authenticateduserdata.html">types/<wbr>Authenticated<wbr>User<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_types_equeumgraphqlserverparams_.html">&quot;lib/types/<wbr>Equeum<wbr>GraphQLServer<wbr>Params&quot;</a>
+						<a href="modules/types_equeumcontext.html">types/<wbr>Equeum<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_types_index_.html">&quot;lib/types/index&quot;</a>
+						<a href="modules/types_equeumgraphqlserverparams.html">types/<wbr>Equeum<wbr>GraphQLServer<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_utils_getpackageversion_.html">&quot;lib/utils/get<wbr>Package<wbr>Version&quot;</a>
+						<a href="modules/utils.html">utils</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_lib_utils_index_.html">&quot;lib/utils/index&quot;</a>
+						<a href="modules/utils_getpackageversion.html">utils/get<wbr>Package<wbr>Version</a>
 					</li>
 				</ul>
 			</nav>
@@ -259,7 +260,6 @@ buildTypeDefsAndResolvers({ <span class="hljs-attr">resolvers</span>: [ ... ] })
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 			</ul>
 			<ul class="tsd-legend">
