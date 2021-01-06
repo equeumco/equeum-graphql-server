@@ -14,7 +14,7 @@
   "homepage": "https://github.com/equeumco/equeum-graphql-server#readme",
   "scripts": {
     "build": "npx tsc",
-    "build:docs": "npx typedoc --out docs/ lib/ && sh commit-docs.sh",
+    "build:docs": "npx typedoc --out docs/ lib/ && git add ./docs",
     "dev": "npx tsc -w",
     "lint": "npx eslint --ext .ts lib/",
     "test": "echo \"Error: no test specified\" && exit 1"
