@@ -26,7 +26,7 @@ class EqueumContext {
    */
     isInternal: boolean;
     /**
-   * Dataloader instances for batching queries
+   * Dataloader instances for batching queries.
    */
     loaders: { [key: string]: Dataloader<string, any> };
 }

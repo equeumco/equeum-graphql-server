@@ -153,24 +153,20 @@
 					<h4>loaders: { [key: string]: DataLoader&lt;string, any&gt; }</h4>
 				</a>
 				<p>Custom data loaders. We use <a href="https://github.com/graphql/dataloader">DataLoader</a> utility to batch and optimise resolving queries. Loaders passed here will be added to context and available to use in your resolvers.</p>
-				<a href="#useragent-object" id="useragent-object" style="color: inherit; text-decoration: none;">
-					<h4>userAgent: object</h4>
-				</a>
-				<p>Requested user&#39;s system and browser information. We use <a href="https://github.com/3rd-Eden/useragent">useragent</a> to parse this information from request headers. </p>
 				<a href="#types" id="types" style="color: inherit; text-decoration: none;">
 					<h2>Types</h2>
 				</a>
 				<a href="#equeumcontext" id="equeumcontext" style="color: inherit; text-decoration: none;">
 					<h3>EqueumContext</h3>
 				</a>
-				<p>This type defines context that will be available inside each resover.</p>
+				<p>This type defines context that will be available inside each resolver.</p>
 				<a href="#decorators" id="decorators" style="color: inherit; text-decoration: none;">
 					<h2>Decorators</h2>
 				</a>
 				<a href="#requirerole" id="requirerole" style="color: inherit; text-decoration: none;">
 					<h3>RequireRole</h3>
 				</a>
-				<p>Decorator to be used for access control. By default we suppose that all GraphQL resources are accessible to all users. If we want to limit the access to specific resource, we can add RequireROle decorator to resolver annotation. Valid roles are &#39;ADMIN&#39; or &#39;MACHINE&#39;, you can also supply multiple roles that are allowed to access this resource by providing an array like [&#39;ADMIN&#39;, &#39;MACHINE&#39;].</p>
+				<p>Decorator to be used for access control. By default we suppose that all GraphQL resources are accessible to all users. If we want to limit the access to specific resource, we can add RequireRole decorator to resolver annotation. Valid roles are &#39;ADMIN&#39; or &#39;MACHINE&#39;, you can also supply multiple roles that are allowed to access this resource by providing an array like [&#39;ADMIN&#39;, &#39;MACHINE&#39;].</p>
 				<pre><code><span style="color: #000000">@</span><span style="color: #795E26">RequireRole</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ADMIN&#039;</span><span style="color: #000000">)</span>
 <span style="color: #000000">@</span><span style="color: #795E26">Query</span><span style="color: #000000">(</span><span style="color: #001080">returns</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">String</span><span style="color: #000000">)</span>
 <span style="color: #001080">async</span><span style="color: #000000"> </span><span style="color: #795E26">test</span><span style="color: #000000">(): </span><span style="color: #267F99">Promise</span><span style="color: #000000">&lt;</span><span style="color: #001080">string</span><span style="color: #000000">&gt; {</span>
@@ -181,6 +177,16 @@
 <span style="color: #000000">@</span><span style="color: #795E26">Query</span><span style="color: #000000">(</span><span style="color: #001080">returns</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">String</span><span style="color: #000000">)</span>
 <span style="color: #001080">async</span><span style="color: #000000"> </span><span style="color: #795E26">test</span><span style="color: #000000">(): </span><span style="color: #267F99">Promise</span><span style="color: #000000">&lt;</span><span style="color: #001080">string</span><span style="color: #000000">&gt; {</span>
 <span style="color: #000000">  return </span><span style="color: #A31515">&#039;I will only be seen by ADMIN or MACHINE&#039;</span><span style="color: #001080">;</span>
+<span style="color: #001080">}</span>
+</code></pre>
+				<a href="#requireroleatleast" id="requireroleatleast" style="color: inherit; text-decoration: none;">
+					<h3>RequireRoleAtLeast</h3>
+				</a>
+				<p>Similar to <code>RequireRole</code> decorator but a little different in terms of how it performs role checks. This decorator is used to limit GraphQL resources to users who have at least certain role defined in <a href="https://github.com/equeumco/equeum-graphql-server/blob/master/lib/constants.ts">UserRoles</a>. For example, <code>@RequireRoleAtLeast(&#39;ADMIN&#39;)</code> equivalents to <code>@RequireRole([&#39;ADMIN&#39;, &#39;MACHINE&#39;])</code>.</p>
+				<pre><code><span style="color: #000000">@</span><span style="color: #795E26">RequireRoleAtLeast</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ADMIN&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">@</span><span style="color: #795E26">Query</span><span style="color: #000000">(</span><span style="color: #001080">returns</span><span style="color: #000000"> </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #267F99">String</span><span style="color: #000000">)</span>
+<span style="color: #001080">async</span><span style="color: #000000"> </span><span style="color: #795E26">test</span><span style="color: #000000">(): </span><span style="color: #267F99">Promise</span><span style="color: #000000">&lt;</span><span style="color: #001080">string</span><span style="color: #000000">&gt; {</span>
+<span style="color: #000000">  return </span><span style="color: #A31515">&#039;I will only be seen by ADMIN or MACHINE.&#039;</span><span style="color: #001080">;</span>
 <span style="color: #001080">}</span>
 </code></pre>
 				<a href="#error-handling" id="error-handling" style="color: inherit; text-decoration: none;">

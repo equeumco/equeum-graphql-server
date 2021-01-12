@@ -100,20 +100,17 @@ Resolver functions
 #### loaders: { [key: string]: DataLoader<string, any> }
 Custom data loaders. We use [DataLoader](https://github.com/graphql/dataloader) utility to batch and optimise resolving queries. Loaders passed here will be added to context and available to use in your resolvers.
 
-#### userAgent: object
-Requested user's system and browser information. We use [useragent](https://github.com/3rd-Eden/useragent) to parse this information from request headers. 
-
 ## Types
 
 ### EqueumContext
 
-This type defines context that will be available inside each resover.
+This type defines context that will be available inside each resolver.
 
 ## Decorators
 
 ### RequireRole
 
-Decorator to be used for access control. By default we suppose that all GraphQL resources are accessible to all users. If we want to limit the access to specific resource, we can add RequireROle decorator to resolver annotation. Valid roles are 'ADMIN' or 'MACHINE', you can also supply multiple roles that are allowed to access this resource by providing an array like ['ADMIN', 'MACHINE'].
+Decorator to be used for access control. By default we suppose that all GraphQL resources are accessible to all users. If we want to limit the access to specific resource, we can add RequireRole decorator to resolver annotation. Valid roles are 'ADMIN' or 'MACHINE', you can also supply multiple roles that are allowed to access this resource by providing an array like ['ADMIN', 'MACHINE'].
 
 ```
 @RequireRole('ADMIN')
@@ -128,6 +125,18 @@ async test(): Promise<string> {
 @Query(returns => String)
 async test(): Promise<string> {
   return 'I will only be seen by ADMIN or MACHINE';
+}
+```
+
+### RequireRoleAtLeast
+
+Similar to `RequireRole` decorator but a little different in terms of how it performs role checks. This decorator is used to limit GraphQL resources to users who have at least certain role defined in [UserRoles](https://github.com/equeumco/equeum-graphql-server/blob/master/lib/constants.ts). For example, `@RequireRoleAtLeast('ADMIN')` equivalents to `@RequireRole(['ADMIN', 'MACHINE'])`.
+
+```
+@RequireRoleAtLeast('ADMIN')
+@Query(returns => String)
+async test(): Promise<string> {
+  return 'I will only be seen by ADMIN or MACHINE.';
 }
 ```
 
