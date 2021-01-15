@@ -17,7 +17,7 @@ class EqueumGraphQLServer {
    * @param params Server parameters
    */
     constructor(params) {
-        const { app, typeDefs, loaders = {}, resolvers, } = params;
+        const { app, typeDefs, loaders = {}, resolvers, onHealthCheck, } = params;
         const federatedTypeDefs = apollo_server_express_1.gql(typeDefs);
         const federatedResolvers = resolvers;
         const schema = federation_1.buildFederatedSchema([{
@@ -52,7 +52,11 @@ class EqueumGraphQLServer {
                 return err;
             },
         });
-        server.applyMiddleware({ app });
+        const middlewares = { app };
+        if (onHealthCheck) {
+            middlewares.onHealthCheck = onHealthCheck;
+        }
+        server.applyMiddleware(middlewares);
         console.log(`EqueumGraphQLServer (v${utils_1.getPackageVersion()}) initialized.`);
     }
     getSchema() {

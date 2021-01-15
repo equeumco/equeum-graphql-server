@@ -1,5 +1,5 @@
 import { GraphQLSchema } from 'graphql';
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer, gql, ServerRegistration } from 'apollo-server-express';
 import { buildFederatedSchema } from '@apollo/federation';
 import useragent from 'useragent';
 import { EqueumContext, EqueumGraphQLServerParams } from './types';
@@ -21,6 +21,7 @@ class EqueumGraphQLServer {
             typeDefs,
             loaders = {},
             resolvers,
+            onHealthCheck,
         } = params;
 
         const federatedTypeDefs = gql(typeDefs);
@@ -59,8 +60,11 @@ class EqueumGraphQLServer {
                 return err;
             },
         });
-
-        server.applyMiddleware({ app });
+        const middlewares: ServerRegistration = { app };
+        if (onHealthCheck) {
+            middlewares.onHealthCheck = onHealthCheck;
+        }
+        server.applyMiddleware(middlewares);
         console.log(`EqueumGraphQLServer (v${getPackageVersion()}) initialized.`);
     }
 
