@@ -6,6 +6,7 @@ var UserRoles;
     UserRoles["UNVERIFIED"] = "UNVERIFIED";
     UserRoles["LIMITED"] = "LIMITED";
     UserRoles["USER"] = "USER";
+    UserRoles["BETA_TESTER"] = "BETA_TESTER";
     UserRoles["ADMIN"] = "ADMIN";
     UserRoles["MACHINE"] = "MACHINE";
 })(UserRoles = exports.UserRoles || (exports.UserRoles = {}));
