@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_express_1 = require("apollo-server-express");
+const apollo_server_testing_1 = require("apollo-server-testing");
 const federation_1 = require("@apollo/federation");
 const useragent_1 = __importDefault(require("useragent"));
 const utils_1 = require("./utils");
@@ -25,7 +26,7 @@ class EqueumGraphQLServer {
                 resolvers: federatedResolvers,
             }]);
         this.schema = schema;
-        const server = new apollo_server_express_1.ApolloServer({
+        this.server = new apollo_server_express_1.ApolloServer({
             schema,
             context: ({ req }) => {
                 const authHeader = req.headers.authorization || '';
@@ -56,11 +57,14 @@ class EqueumGraphQLServer {
         if (onHealthCheck) {
             middlewares.onHealthCheck = onHealthCheck;
         }
-        server.applyMiddleware(middlewares);
+        this.server.applyMiddleware(middlewares);
         console.log(`EqueumGraphQLServer (v${utils_1.getPackageVersion()}) initialized.`);
     }
     getSchema() {
         return this.schema;
+    }
+    createTestClient() {
+        return apollo_server_testing_1.createTestClient(this.server);
     }
 }
 exports.default = EqueumGraphQLServer;

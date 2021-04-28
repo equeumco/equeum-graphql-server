@@ -1,5 +1,6 @@
 import { GraphQLSchema } from 'graphql';
 import { ApolloServer, gql, ServerRegistration } from 'apollo-server-express';
+import { createTestClient } from 'apollo-server-testing';
 import { buildFederatedSchema } from '@apollo/federation';
 import useragent from 'useragent';
 import { EqueumContext, EqueumGraphQLServerParams } from './types';
@@ -10,6 +11,7 @@ import { getPackageVersion } from './utils';
  */
 class EqueumGraphQLServer {
     schema: GraphQLSchema;
+    server: ApolloServer;
     /**
    * Configures and sets up the server and binds it to Express app.
    *
@@ -33,7 +35,7 @@ class EqueumGraphQLServer {
         }]);
         this.schema = schema;
 
-        const server = new ApolloServer({
+        this.server = new ApolloServer({
             schema,
             context: ({ req }: { req: any }): EqueumContext => {
                 const authHeader: string = req.headers.authorization || '';
@@ -64,12 +66,15 @@ class EqueumGraphQLServer {
         if (onHealthCheck) {
             middlewares.onHealthCheck = onHealthCheck;
         }
-        server.applyMiddleware(middlewares);
+        this.server.applyMiddleware(middlewares);
         console.log(`EqueumGraphQLServer (v${getPackageVersion()}) initialized.`);
     }
 
     getSchema(): GraphQLSchema {
         return this.schema;
+    }
+    createTestClient() {
+        return createTestClient(this.server);
     }
 }
 
