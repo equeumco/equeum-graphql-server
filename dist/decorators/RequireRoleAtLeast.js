@@ -27,6 +27,8 @@ const constants_1 = require("../constants");
 const VALID_ROLES = Object.values(constants_1.UserRoles);
 const RequireRoleAtLeast = (minimumRole) => {
     return type_graphql_1.createMethodDecorator(({ context }, next) => __awaiter(void 0, void 0, void 0, function* () {
+        if (constants_1.NODE_ENV === 'test')
+            return next();
         const minimumRoleIndex = VALID_ROLES.indexOf(minimumRole);
         const roleIndex = VALID_ROLES.indexOf(context.user.role);
         if (minimumRoleIndex === -1) {

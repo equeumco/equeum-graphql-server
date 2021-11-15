@@ -6,3 +6,4 @@ export declare enum UserRoles {
     ADMIN = "ADMIN",
     MACHINE = "MACHINE"
 }
+export declare const NODE_ENV: string;
