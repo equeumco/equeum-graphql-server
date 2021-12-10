@@ -36,7 +36,7 @@ class EqueumGraphQLServer {
                     authToken,
                     authHeader,
                     userAgent,
-                    user: req.user,
+                    user: Object.assign(Object.assign({}, req.user), { headers: req.headers }),
                     isInternal: req.headers['is-internal'] === 'true',
                     loaders: loaderInstances,
                 };
