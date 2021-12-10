@@ -16,7 +16,7 @@ interface AuthenticatedUserData {
     machineName?: string;
     /** Indicates if request is made via external API */
     isExternal?: boolean;
-    headers: { [key: string]: string };
+    headers?: { [key: string]: string };
 }
 
 export default AuthenticatedUserData;
