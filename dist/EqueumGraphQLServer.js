@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const apollo_server_express_1 = require("apollo-server-express");
-const apollo_server_testing_1 = require("apollo-server-testing");
 const useragent_1 = __importDefault(require("useragent"));
 const utils_1 = require("./utils");
 /**
@@ -19,7 +18,7 @@ class EqueumGraphQLServer {
     constructor(params) {
         const { app, typeDefs, loaders = {}, resolvers, onHealthCheck, } = params;
         this.server = new apollo_server_express_1.ApolloServer({
-            typeDefs: apollo_server_express_1.gql(typeDefs),
+            typeDefs: (0, apollo_server_express_1.gql)(typeDefs),
             resolvers: resolvers,
             context: ({ req }) => {
                 const authHeader = req.headers.authorization || '';
@@ -51,10 +50,7 @@ class EqueumGraphQLServer {
             middlewares.onHealthCheck = onHealthCheck;
         }
         this.server.applyMiddleware(middlewares);
-        console.log(`EqueumGraphQLServer (v${utils_1.getPackageVersion()}) initialized.`);
-    }
-    createTestClient() {
-        return apollo_server_testing_1.createTestClient(this.server);
+        console.log(`EqueumGraphQLServer (v${(0, utils_1.getPackageVersion)()}) initialized.`);
     }
 }
 exports.default = EqueumGraphQLServer;

@@ -1,5 +1,4 @@
 import { ApolloServer, gql, ServerRegistration } from 'apollo-server-express';
-import { createTestClient } from 'apollo-server-testing';
 import useragent from 'useragent';
 import { EqueumContext, EqueumGraphQLServerParams } from './types';
 import { getPackageVersion } from './utils';
@@ -57,9 +56,6 @@ class EqueumGraphQLServer {
         }
         this.server.applyMiddleware(middlewares);
         console.log(`EqueumGraphQLServer (v${getPackageVersion()}) initialized.`);
-    }
-    createTestClient() {
-        return createTestClient(this.server);
     }
 }
 

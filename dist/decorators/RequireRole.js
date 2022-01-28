@@ -23,7 +23,7 @@ const apollo_server_express_1 = require("apollo-server-express");
  * @param roles - role or roles needed to acces this resource
  */
 const RequireRole = (roles) => {
-    return type_graphql_1.createMethodDecorator(({ context }, next) => __awaiter(void 0, void 0, void 0, function* () {
+    return (0, type_graphql_1.createMethodDecorator)(({ context }, next) => __awaiter(void 0, void 0, void 0, function* () {
         if (Array.isArray(roles)) {
             if (roles.indexOf(context.user.role) === -1) {
                 throw new apollo_server_express_1.AuthenticationError(`To access this resource you need to have ${roles
