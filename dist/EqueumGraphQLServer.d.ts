@@ -11,6 +11,5 @@ declare class EqueumGraphQLServer {
    * @param params Server parameters
    */
     constructor(params: EqueumGraphQLServerParams);
-    createTestClient(): import("apollo-server-testing").ApolloServerTestClient;
 }
 export default EqueumGraphQLServer;

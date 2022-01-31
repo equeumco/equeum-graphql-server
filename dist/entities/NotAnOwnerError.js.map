@@ -1,1 +1,1 @@
-{"version":3,"file":"NotAnOwnerError.js","sourceRoot":"","sources":["../../lib/entities/NotAnOwnerError.ts"],"names":[],"mappings":";;AAAA,iDAAgD;AAEhD;;;GAGG;AACH,MAAM,eAAgB,SAAQ,+BAAe;IACzC;QACI,KAAK,CAAC,iDAAiD,CAAC,CAAC;IAC7D,CAAC;CACJ;AAED,kBAAe,eAAe,CAAC"}
+{"version":3,"file":"NotAnOwnerError.js","sourceRoot":"","sources":["../../lib/entities/NotAnOwnerError.ts"],"names":[],"mappings":";;AAAA,iEAAwD;AAExD;;;GAGG;AACH,MAAM,eAAgB,SAAQ,uCAAe;IACzC;QACI,KAAK,CAAC,iDAAiD,CAAC,CAAC;IAC7D,CAAC;CACJ;AAED,kBAAe,eAAe,CAAC"}
