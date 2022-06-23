@@ -13,13 +13,11 @@ class EqueumGraphQLServer {
    *
    * @param params Server parameters
    */
-    constructor(params: EqueumGraphQLServerParams) {
+    constructor(private params: EqueumGraphQLServerParams) {
         const {
-            app,
             typeDefs,
             loaders = {},
             resolvers,
-            onHealthCheck,
         } = params;
 
         this.server = new ApolloServer({
@@ -42,7 +40,7 @@ class EqueumGraphQLServer {
                     userAgent,
                     user: { ...req.user, headers: req.headers },
                     isInternal: req.headers['is-internal'] === 'true',
-                    loaders:loaderInstances,
+                    loaders: loaderInstances,
                 };
             },
             formatError: (err) => {
@@ -50,6 +48,13 @@ class EqueumGraphQLServer {
                 return err;
             },
         });
+    }
+    async initialize() {
+        const {
+            app,
+            onHealthCheck,
+        } = this.params;
+        await this.server.start();
         const middlewares: ServerRegistration = { app };
         if (onHealthCheck) {
             middlewares.onHealthCheck = onHealthCheck;
