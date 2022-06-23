@@ -1,5 +1,5 @@
 import { Application, Request } from 'express';
-import { IResolvers } from 'graphql-tools';
+import { IResolvers } from '@graphql-tools/utils';
 import DataLoader from 'dataloader';
 /**
  * Object containing set of parameters that can be passed to the constructor

@@ -18,7 +18,7 @@ class EqueumGraphQLServer {
     constructor(params) {
         const { app, typeDefs, loaders = {}, resolvers, onHealthCheck, } = params;
         this.server = new apollo_server_express_1.ApolloServer({
-            typeDefs: apollo_server_express_1.gql(typeDefs),
+            typeDefs: (0, apollo_server_express_1.gql)(typeDefs),
             resolvers: resolvers,
             context: ({ req }) => {
                 const authHeader = req.headers.authorization || '';
@@ -50,7 +50,7 @@ class EqueumGraphQLServer {
             middlewares.onHealthCheck = onHealthCheck;
         }
         this.server.applyMiddleware(middlewares);
-        console.log(`EqueumGraphQLServer (v${utils_1.getPackageVersion()}) initialized.`);
+        console.log(`EqueumGraphQLServer (v${(0, utils_1.getPackageVersion)()}) initialized.`);
     }
 }
 exports.default = EqueumGraphQLServer;
