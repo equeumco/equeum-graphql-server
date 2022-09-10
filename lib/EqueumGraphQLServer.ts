@@ -38,7 +38,11 @@ class EqueumGraphQLServer {
                     authToken,
                     authHeader,
                     userAgent,
-                    user: { ...req.user, headers: req.headers },
+                    user: {
+                        ...req.user,
+                        headers: req.headers,
+                        clientIP: req.headers['x-forwarded-for']?.toString(),
+                    },
                     isInternal: req.headers['is-internal'] === 'true',
                     loaders: loaderInstances,
                 };

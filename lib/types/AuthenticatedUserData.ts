@@ -2,6 +2,7 @@
  * Object containing data about the user making the request.
  */
 interface AuthenticatedUserData {
+    clientIP?: string;
     /** UUID of the user making the request. */
     id: string;
     /** Role of the user */

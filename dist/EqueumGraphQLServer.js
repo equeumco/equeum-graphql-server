@@ -31,6 +31,7 @@ class EqueumGraphQLServer {
             typeDefs: (0, apollo_server_express_1.gql)(typeDefs),
             resolvers: resolvers,
             context: ({ req }) => {
+                var _a;
                 const authHeader = req.headers.authorization || '';
                 const headerParts = authHeader.split(' ');
                 const authToken = headerParts && headerParts.length > 1 ? headerParts[1] : '';
@@ -45,7 +46,7 @@ class EqueumGraphQLServer {
                     authToken,
                     authHeader,
                     userAgent,
-                    user: Object.assign(Object.assign({}, req.user), { headers: req.headers }),
+                    user: Object.assign(Object.assign({}, req.user), { headers: req.headers, clientIP: (_a = req.headers['x-forwarded-for']) === null || _a === void 0 ? void 0 : _a.toString() }),
                     isInternal: req.headers['is-internal'] === 'true',
                     loaders: loaderInstances,
                 };
