@@ -3,6 +3,7 @@ export enum UserRoles {
     LIMITED = 'LIMITED',
     USER = 'USER',
     BETA_TESTER = 'BETA_TESTER',
+    ADMIN_VIEWER = 'ADMIN_VIEWER',
     ADMIN = 'ADMIN',
     MACHINE = 'MACHINE',
 };
