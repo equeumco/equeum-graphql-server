@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const entities_1 = require("../entities");
 const type_graphql_1 = require("type-graphql");
-const apollo_server_express_1 = require("apollo-server-express");
 /**
  * Decorator to be used for access control. By default we suppose that
  * all GraphQL resources are accessible to all users. If we want to limit
@@ -26,14 +26,12 @@ const RequireRole = (roles) => {
     return (0, type_graphql_1.createMethodDecorator)(({ context }, next) => __awaiter(void 0, void 0, void 0, function* () {
         if (Array.isArray(roles)) {
             if (roles.indexOf(context.user.role) === -1) {
-                throw new apollo_server_express_1.AuthenticationError(`To access this resource you need to have ${roles
-                    .map(role => `'${role}'`)
-                    .join(' or ')} role.`);
+                throw new entities_1.UnAuthenticatedError(`To access this resource you need to have ${roles.map(role => `'${role}'`).join(' or ')} role.`);
             }
         }
         else {
             if (context.user.role !== roles) {
-                throw new apollo_server_express_1.AuthenticationError(`To access this resource you need to have '${roles}' role.`);
+                throw new entities_1.UnAuthenticatedError(`To access this resource you need to have '${roles}' role.`);
             }
         }
         return next();

@@ -1,6 +1,8 @@
-import { Application, Request } from 'express';
+/// <reference types="node" />
+import http from 'http';
 import { IResolvers } from '@graphql-tools/utils';
 import DataLoader from 'dataloader';
+import { Application } from 'express';
 /**
  * Object containing set of parameters that can be passed to the constructor
  * of EqueumGraphQLServer.
@@ -8,15 +10,13 @@ import DataLoader from 'dataloader';
 interface EqueumGraphQLServerParams {
     /** Express app object to build the server over */
     app: Application;
-    /** GraphQL type definitions */
-    typeDefs: any;
+    /** Express app object to build the server over */
+    httpServer: http.Server;
     /** Resolver functions */
-    resolvers: IResolvers<any, any> | IResolvers<any, any>[];
+    resolvers: IResolvers<any, any>[];
     /** dataloader instance creators */
     loaders?: {
         [key: string]: () => DataLoader<string, any>;
     };
-    /** Healthcheck function */
-    onHealthCheck?: (req: Request) => Promise<any>;
 }
 export default EqueumGraphQLServerParams;

@@ -1,7 +1,7 @@
 import { createMethodDecorator } from 'type-graphql';
-import { AuthenticationError } from 'apollo-server-express';
 import { EqueumContext } from '../types';
 import { NODE_ENV, UserRoles } from '../constants';
+import { UnAuthenticatedError } from '../entities';
 
 /**
  * Decorator to be used for access control. By default we suppose that
@@ -24,17 +24,13 @@ const RequireRoleAtLeast = (minimumRole: string) => {
         const minimumRoleIndex = VALID_ROLES.indexOf(minimumRole);
         const roleIndex = VALID_ROLES.indexOf(context.user.role);
         if (minimumRoleIndex === -1) {
-            throw new AuthenticationError(`${minimumRole} is not a valid role.`);
+            throw new UnAuthenticatedError(`${minimumRole} is not a valid role.`);
         }
         if (roleIndex === -1) {
-            throw new AuthenticationError(
-                `${context.user.role} is not a valid role.`,
-            );
+            throw new UnAuthenticatedError(`${context.user.role} is not a valid role.`);
         }
         if (minimumRoleIndex > roleIndex) {
-            throw new AuthenticationError(
-                `To access this resource, you need to have at least ${minimumRole} role.`,
-            );
+            throw new UnAuthenticatedError(`To access this resource, you need to have at least ${minimumRole} role.`);
         }
         return next();
     });

@@ -1,12 +1,13 @@
-import { ValidationError } from 'apollo-server-express';
+
+import { GraphQLError } from 'graphql';
 
 /**
  * Error to be thrown when the uswer is not an owner of the
  * entity he is trying to access or change.
  */
-class NotAnOwnerError extends ValidationError {
+class NotAnOwnerError extends GraphQLError {
     constructor() {
-        super('You must be an owner to perform this operation.');
+        super('You must be an owner to perform this operation.', { extensions: { code: 'GRAPHQL_VALIDATION_FAILED' } });
     }
 }
 

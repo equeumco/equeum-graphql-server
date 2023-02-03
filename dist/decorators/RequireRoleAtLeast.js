@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const type_graphql_1 = require("type-graphql");
-const apollo_server_express_1 = require("apollo-server-express");
 const constants_1 = require("../constants");
+const entities_1 = require("../entities");
 /**
  * Decorator to be used for access control. By default we suppose that
  * all GraphQL resources are accessible to all users. If we want to limit
@@ -32,13 +32,13 @@ const RequireRoleAtLeast = (minimumRole) => {
         const minimumRoleIndex = VALID_ROLES.indexOf(minimumRole);
         const roleIndex = VALID_ROLES.indexOf(context.user.role);
         if (minimumRoleIndex === -1) {
-            throw new apollo_server_express_1.AuthenticationError(`${minimumRole} is not a valid role.`);
+            throw new entities_1.UnAuthenticatedError(`${minimumRole} is not a valid role.`);
         }
         if (roleIndex === -1) {
-            throw new apollo_server_express_1.AuthenticationError(`${context.user.role} is not a valid role.`);
+            throw new entities_1.UnAuthenticatedError(`${context.user.role} is not a valid role.`);
         }
         if (minimumRoleIndex > roleIndex) {
-            throw new apollo_server_express_1.AuthenticationError(`To access this resource, you need to have at least ${minimumRole} role.`);
+            throw new entities_1.UnAuthenticatedError(`To access this resource, you need to have at least ${minimumRole} role.`);
         }
         return next();
     }));
