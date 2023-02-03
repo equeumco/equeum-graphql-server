@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = exports.NotAnOwnerError = exports.UserRoles = exports.EqueumContext = exports.RequireRoleAtLeast = exports.RequireRole = void 0;
+exports.default = exports.UnAuthenticatedError = exports.NotAnOwnerError = exports.UserRoles = exports.EqueumContext = exports.RequireRoleAtLeast = exports.RequireRole = void 0;
 // Decorators
 var RequireRole_1 = require("./decorators/RequireRole");
 Object.defineProperty(exports, "RequireRole", { enumerable: true, get: function () { return __importDefault(RequireRole_1).default; } });
@@ -18,6 +18,8 @@ Object.defineProperty(exports, "UserRoles", { enumerable: true, get: function ()
 // Errors
 var NotAnOwnerError_1 = require("./entities/NotAnOwnerError");
 Object.defineProperty(exports, "NotAnOwnerError", { enumerable: true, get: function () { return __importDefault(NotAnOwnerError_1).default; } });
+var UnAuthenticatedError_1 = require("./entities/UnAuthenticatedError");
+Object.defineProperty(exports, "UnAuthenticatedError", { enumerable: true, get: function () { return __importDefault(UnAuthenticatedError_1).default; } });
 // Default export (main server class)
 var EqueumGraphQLServer_1 = require("./EqueumGraphQLServer");
 Object.defineProperty(exports, "default", { enumerable: true, get: function () { return __importDefault(EqueumGraphQLServer_1).default; } });

@@ -1,0 +1,1 @@
+{"version":3,"file":"UnAuthenticatedError.js","sourceRoot":"","sources":["../../lib/entities/UnAuthenticatedError.ts"],"names":[],"mappings":";;AACA,qCAAuC;AAEvC;;GAEG;AACH,MAAM,oBAAqB,SAAQ,sBAAY;IAC3C,YAAY,OAAgB;QACxB,KAAK,CAAC,OAAO,IAAI,oDAAoD,EAAE,EAAE,UAAU,EAAE,EAAE,IAAI,EAAE,iBAAiB,EAAE,EAAE,CAAC,CAAC;IACxH,CAAC;CACJ;AAED,kBAAe,oBAAoB,CAAC"}

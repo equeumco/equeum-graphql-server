@@ -10,6 +10,7 @@ export { UserRoles } from './constants';
 
 // Errors
 export { default as NotAnOwnerError } from './entities/NotAnOwnerError';
+export { default as UnAuthenticatedError } from './entities/UnAuthenticatedError';
 
 // Default export (main server class)
 export { default } from './EqueumGraphQLServer';

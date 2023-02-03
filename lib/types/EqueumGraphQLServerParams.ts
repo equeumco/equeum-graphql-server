@@ -1,4 +1,4 @@
-import { Application, Request } from 'express';
+import { Application } from 'express';
 import { IResolvers } from '@graphql-tools/utils';
 import DataLoader from 'dataloader';
 
@@ -15,8 +15,6 @@ interface EqueumGraphQLServerParams {
     resolvers: IResolvers<any, any> | IResolvers<any, any>[];
     /** dataloader instance creators */
     loaders?: { [key: string]: () => DataLoader<string, any> };
-    /** Healthcheck function */
-    onHealthCheck?: (req: Request) => Promise<any>;
 }
 
 export default EqueumGraphQLServerParams;
