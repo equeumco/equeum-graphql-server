@@ -13,7 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = require("@apollo/server");
-const standalone_1 = require("@apollo/server/standalone");
+const express4_1 = require("@apollo/server/express4");
+const drainHttpServer_1 = require("@apollo/server/plugin/drainHttpServer");
+const type_graphql_1 = require("type-graphql");
 const useragent_1 = __importDefault(require("useragent"));
 const utils_1 = require("./utils");
 /**
@@ -30,16 +32,21 @@ class EqueumGraphQLServer {
     }
     initialize() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { typeDefs, loaders = {}, resolvers, } = this.params;
+            const { loaders = {}, resolvers, app, httpServer, } = this.params;
+            const schema = yield (0, type_graphql_1.buildSchema)({
+                resolvers: resolvers,
+                validate: { forbidUnknownValues: false },
+            });
             this.server = new server_1.ApolloServer({
-                typeDefs,
-                resolvers,
+                schema,
+                plugins: [(0, drainHttpServer_1.ApolloServerPluginDrainHttpServer)({ httpServer })],
                 formatError: (err) => {
                     console.error(err);
                     return err;
                 },
             });
-            const { url } = yield (0, standalone_1.startStandaloneServer)(this.server, {
+            yield this.server.start();
+            app.use('/graphql', (0, express4_1.expressMiddleware)(this.server, {
                 context: ({ req }) => __awaiter(this, void 0, void 0, function* () {
                     var _a;
                     const authHeader = req.headers.authorization || '';
@@ -61,10 +68,8 @@ class EqueumGraphQLServer {
                         loaders: loaderInstances,
                     };
                 }),
-                listen: { port: 4000 },
-            });
-            console.log(`🚀  Server ready at ${url}, Version:`, (0, utils_1.getPackageVersion)());
-            yield this.server.start();
+            }));
+            console.log('🚀  Graphql Server ready, Version:', (0, utils_1.getPackageVersion)());
         });
     }
 }
